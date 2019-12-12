@@ -9,7 +9,7 @@ public class Collaborator {
     String Téléphone;
     String Mail;
     String Etage;
-//    Code immeuble de l'emplacement du collaborateur
+    String CodeImmeuble;
 //    Région
 //    Code région
 //    Niveau d'un territoirte
