@@ -2,16 +2,16 @@ package com.dojo.stage.domain;
 
 public class Collaborator {
     private String uid;
-    private String Civilite;
-    private String Nom;
-    private String Prenom;
-    private String Fonction;
-    private String Telephone;
-    private String Mail;
-    private String Etage;
-    private String CodeImmeuble;
-    private String Region;
-    private String regionCode;
+    private String civility;
+    private String name;
+    private String surname;
+    private String function;
+    private String phoneNumber;
+    private String eMail;
+    private String step;
+    private String builingCode;
+    private String state;
+    private String stateCode;
     private String territoryLevel;
     private String territoiryCode;
     private String entityLevel;
@@ -20,6 +20,6 @@ public class Collaborator {
     private String agencyCode;
     private String localisation;
     private String pj;
-    private boolean toMigrate;
+    private String toMigrate;
 
 }
