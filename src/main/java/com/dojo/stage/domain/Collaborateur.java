@@ -1,9 +1,7 @@
 package com.dojo.stage.domain;
 
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 
-
-public class Collaborator {
+public class Collaborateur {
 
     private String uid;
     private String civilite;
@@ -29,7 +27,7 @@ public class Collaborator {
 
     public void Collaborator(){}
 
-    public Collaborator(String uid, String civilite, String nom, String prenom, String fonction, String telephone, String mail, String etage, String uoAffectation, String codeImmeubleEmplacementCollaborateur, String region, String codeRegion, String niveauTerritoirte, String codeTerritoire, String niveauEntite, String codeEntite, String niveauAgence, String codeAgence, String localisationCollaborateur, String pj, String aMigrer) {
+    public Collaborateur(String uid, String civilite, String nom, String prenom, String fonction, String telephone, String mail, String etage, String uoAffectation, String codeImmeubleEmplacementCollaborateur, String region, String codeRegion, String niveauTerritoirte, String codeTerritoire, String niveauEntite, String codeEntite, String niveauAgence, String codeAgence, String localisationCollaborateur, String pj, String aMigrer) {
         this.uid = uid;
         this.civilite = civilite;
         this.nom = nom;
