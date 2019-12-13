@@ -25,12 +25,12 @@ public class Regles {
     private String fluxDeRattachement;
     @OneToMany (cascade=CascadeType.ALL)
     @JoinColumn(name="regles_id")
-    private Set<Competences> competences;
+    private Set<Competence> competences;
 
     public Regles() {
     };
 
-    public Regles(Long id, String deploiement, String metier, String domaine, String stratesEquipes, String profil, String equipesSupervisees, String descriptifEquipesSupervisses, String fluxDeRattachement, Set<Competences> competences) {
+    public Regles(Long id, String deploiement, String metier, String domaine, String stratesEquipes, String profil, String equipesSupervisees, String descriptifEquipesSupervisses, String fluxDeRattachement, Set<Competence> competences) {
         this.id = id;
         this.deploiement = deploiement;
         this.metier = metier;
@@ -115,11 +115,11 @@ public class Regles {
         this.fluxDeRattachement = fluxDeRattachement;
     }
 
-    public Set<Competences> getCompetences() {
+    public Set<Competence> getCompetences() {
         return competences;
     }
 
-    public void setCompetences(Set<Competences> competences) {
+    public void setCompetences(Set<Competence> competences) {
         this.competences = competences;
     }
 }

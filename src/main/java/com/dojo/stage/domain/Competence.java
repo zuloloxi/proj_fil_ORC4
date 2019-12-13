@@ -6,22 +6,22 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Competences {
+public class Competence {
     @Id
     @GeneratedValue
     private Long id;
     @Column
     private String competence;
     @Column
-    private String descriptifCompetence;
+    private String decriptif;
 
-    public Competences(){
+    public Competence(){
 
     };
-    public Competences(Long id, String competence, String descriptifCompetence) {
+    public Competence(Long id, String competence, String descriptifCompetence) {
         this.id = id;
         this.competence = competence;
-        this.descriptifCompetence = descriptifCompetence;
+        this.decriptif = descriptifCompetence;
     }
 
     public Long getId() {
@@ -41,11 +41,11 @@ public class Competences {
     }
 
     public String getDescriptifCompetence() {
-        return descriptifCompetence;
+        return decriptif;
     }
 
     public void setDescriptifCompetence(String descriptifCompetence) {
-        this.descriptifCompetence = descriptifCompetence;
+        this.decriptif = descriptifCompetence;
     }
 
     @Override
@@ -53,7 +53,7 @@ public class Competences {
         return "CompetencesParPoste{" +
                 "id=" + id +
                 ", competence='" + competence + '\'' +
-                ", descriptifCompetence='" + descriptifCompetence + '\'' +
+                ", descriptifCompetence='" + decriptif + '\'' +
                 '}';
     }
 }
