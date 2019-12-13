@@ -18,10 +18,11 @@ public class Competence {
     public Competence(){
 
     };
-    public Competence(Long id, String competence, String descriptifCompetence) {
+
+    public Competence(Long id, String competence, String decriptif) {
         this.id = id;
         this.competence = competence;
-        this.decriptif = descriptifCompetence;
+        this.decriptif = decriptif;
     }
 
     public Long getId() {
@@ -40,20 +41,20 @@ public class Competence {
         this.competence = competence;
     }
 
-    public String getDescriptifCompetence() {
+    public String getDecriptif() {
         return decriptif;
     }
 
-    public void setDescriptifCompetence(String descriptifCompetence) {
-        this.decriptif = descriptifCompetence;
+    public void setDecriptif(String decriptif) {
+        this.decriptif = decriptif;
     }
 
     @Override
     public String toString() {
-        return "CompetencesParPoste{" +
+        return "Competence{" +
                 "id=" + id +
                 ", competence='" + competence + '\'' +
-                ", descriptifCompetence='" + decriptif + '\'' +
+                ", decriptif='" + decriptif + '\'' +
                 '}';
     }
 }
