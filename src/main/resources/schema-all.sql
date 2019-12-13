@@ -84,14 +84,14 @@ create table output_file (
 CREATE TABLE regles (
      id int8 NOT NULL,
      deploiement VARCHAR(255),
-     descriptif_equipes_supervisses VARCHAR(255),
-     domaine VARCHAR(255),
-     equipes_supervisees VARCHAR(255),
-     flux_de_rattachement VARCHAR(255),
      metier VARCHAR(255),
-     profil VARCHAR(255),
+     poste_type VARCHAR(255),
+     domaine VARCHAR(255),
      strates_equipes VARCHAR(255),
-    );
+     profil VARCHAR(255),
+     equipes_supervisees VARCHAR(255),
+     descriptif_equipes_supervisses VARCHAR(255)
+);
 
 CREATE TABLE competence (
     id int8 NOT NULL,
