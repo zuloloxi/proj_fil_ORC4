@@ -12,6 +12,8 @@ public class Regles {
     @Column
     private String metier;
     @Column
+    private String posteType;
+    @Column
     private String domaine;
     @Column
     private String stratesEquipes;
@@ -21,8 +23,6 @@ public class Regles {
     private String equipesSupervisees;
     @Column
     private String descriptifEquipesSupervisses;
-    @Column
-    private String fluxDeRattachement;
     @OneToMany (cascade=CascadeType.ALL)
     @JoinColumn(name="regles_id")
     private Set<Competence> competences;
@@ -30,16 +30,16 @@ public class Regles {
     public Regles() {
     };
 
-    public Regles(Long id, String deploiement, String metier, String domaine, String stratesEquipes, String profil, String equipesSupervisees, String descriptifEquipesSupervisses, String fluxDeRattachement, Set<Competence> competences) {
+    public Regles(Long id, String deploiement, String metier, String posteType, String domaine, String stratesEquipes, String profil, String equipesSupervisees, String descriptifEquipesSupervisses, Set<Competence> competences) {
         this.id = id;
         this.deploiement = deploiement;
         this.metier = metier;
+        this.posteType = posteType;
         this.domaine = domaine;
         this.stratesEquipes = stratesEquipes;
         this.profil = profil;
         this.equipesSupervisees = equipesSupervisees;
         this.descriptifEquipesSupervisses = descriptifEquipesSupervisses;
-        this.fluxDeRattachement = fluxDeRattachement;
         this.competences = competences;
     }
 
@@ -65,6 +65,14 @@ public class Regles {
 
     public void setMetier(String metier) {
         this.metier = metier;
+    }
+
+    public String getPosteType() {
+        return posteType;
+    }
+
+    public void setPosteType(String posteType) {
+        this.posteType = posteType;
     }
 
     public String getDomaine() {
@@ -107,19 +115,27 @@ public class Regles {
         this.descriptifEquipesSupervisses = descriptifEquipesSupervisses;
     }
 
-    public String getFluxDeRattachement() {
-        return fluxDeRattachement;
-    }
-
-    public void setFluxDeRattachement(String fluxDeRattachement) {
-        this.fluxDeRattachement = fluxDeRattachement;
-    }
-
     public Set<Competence> getCompetences() {
         return competences;
     }
 
     public void setCompetences(Set<Competence> competences) {
         this.competences = competences;
+    }
+
+    @Override
+    public String toString() {
+        return "Regles{" +
+                "id=" + id +
+                ", deploiement='" + deploiement + '\'' +
+                ", metier='" + metier + '\'' +
+                ", posteType='" + posteType + '\'' +
+                ", domaine='" + domaine + '\'' +
+                ", stratesEquipes='" + stratesEquipes + '\'' +
+                ", profil='" + profil + '\'' +
+                ", equipesSupervisees='" + equipesSupervisees + '\'' +
+                ", descriptifEquipesSupervisses='" + descriptifEquipesSupervisses + '\'' +
+                ", competences=" + competences +
+                '}';
     }
 }
