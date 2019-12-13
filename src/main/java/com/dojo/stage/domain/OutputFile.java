@@ -1,5 +1,6 @@
 package com.dojo.stage.domain;
 
+
 public class OutputFile {
 
      private String action ;
