@@ -16,7 +16,6 @@ public class Competence {
     private String decriptif;
 
     public Competence(){
-
     };
 
     public Competence(Long id, String competence, String decriptif) {

@@ -55,8 +55,7 @@ public class OutputFile {
      private String commentaires ;
 
      
-     public OutputFile(String identifiant, String nom, String prenom, String email, String domaine, String equipe, String profil, String competences
-                       ) {
+     public OutputFile(String identifiant, String nom, String prenom, String email, String domaine, String equipe, String profil, String competences) {
           this.action = "";
           this.identifiant = identifiant;
           this.nom = nom;
