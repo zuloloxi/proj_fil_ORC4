@@ -15,7 +15,7 @@ public class Collaborateur {
     private String codeImmeubleEmplacementCollaborateur;
     private String region;
     private String codeRegion;
-    private String niveauTerritoirte;
+    private String niveauTerritoire;
     private String codeTerritoire;
     private String niveauEntite;
     private String codeEntite;
@@ -40,7 +40,7 @@ public class Collaborateur {
         this.codeImmeubleEmplacementCollaborateur = codeImmeubleEmplacementCollaborateur;
         this.region = region;
         this.codeRegion = codeRegion;
-        this.niveauTerritoirte = niveauTerritoirte;
+        this.niveauTerritoire = niveauTerritoirte;
         this.codeTerritoire = codeTerritoire;
         this.niveauEntite = niveauEntite;
         this.codeEntite = codeEntite;
@@ -99,8 +99,8 @@ public class Collaborateur {
         return codeRegion;
     }
 
-    public String getNiveauTerritoirte() {
-        return niveauTerritoirte;
+    public String getNiveauTerritoire() {
+        return niveauTerritoire;
     }
 
     public String getCodeTerritoire() {
