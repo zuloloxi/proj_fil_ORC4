@@ -1,5 +1,3 @@
-DROP TABLE collaborateur IF EXISTS;
-
 CREATE TABLE collaborateur (
      id int8 NOT NULL PRIMARY KEY,
      uid VARCHAR(255),
@@ -28,7 +26,6 @@ CREATE TABLE collaborateur (
   );
 
 create table output_file (
-
      id int8 NOT NULL PRIMARY KEY,
      action VARCHAR(50),
      identifiant VARCHAR(6),
@@ -83,3 +80,22 @@ create table output_file (
      create_date_time TIMESTAMP,
      update_date_time TIMESTAMP
   );
+  
+CREATE TABLE regles (
+     id int8 NOT NULL,
+     deploiement VARCHAR(255),
+     descriptif_equipes_supervisses VARCHAR(255),
+     domaine VARCHAR(255),
+     equipes_supervisees VARCHAR(255),
+     flux_de_rattachement VARCHAR(255),
+     metier VARCHAR(255),
+     profil VARCHAR(255),
+     strates_equipes VARCHAR(255),
+    );
+
+CREATE TABLE competence (
+    id int8 NOT NULL,
+    competence VARCHAR(255),
+    decriptif VARCHAR(255),
+    regles_id int8
+    );
