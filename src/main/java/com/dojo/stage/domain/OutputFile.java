@@ -40,12 +40,12 @@ public class OutputFile {
      private String sitesSupervises;
      private String canauxExternes ;
      private String pausesSupervisees;
-     private String tâchesSupervisees ;
+     private String tachesSupervisees;
      private String compteursSupervises ;
      private String servicesSupervises ;
      private String alertesSeuilSupervisees ;
      private String categoriesAlertes ;
-     private String modèlesAlertes ;
+     private String modelesAlertes;
      private String panneauxSupervises ;
      private String missionsSupervisees ;
      private String annuairesSupervises ;
@@ -55,8 +55,7 @@ public class OutputFile {
      private String commentaires ;
 
      
-     public OutputFile(String identifiant, String nom, String prenom, String email, String domaine, String equipe, String profil, String competences
-                       ) {
+     public OutputFile(String identifiant, String nom, String prenom, String email, String domaine, String equipe, String profil, String competences) {
           this.action = "";
           this.identifiant = identifiant;
           this.nom = nom;
@@ -94,12 +93,12 @@ public class OutputFile {
           this.sitesSupervises = "";
           this.canauxExternes = "";
           this.pausesSupervisees = "";
-          this.tâchesSupervisees = "";
+          this.tachesSupervisees = "";
           this.compteursSupervises = "";
           this.servicesSupervises = "";
           this.alertesSeuilSupervisees = "";
           this.categoriesAlertes = "";
-          this.modèlesAlertes = "";
+          this.modelesAlertes = "";
           this.panneauxSupervises = "";
           this.missionsSupervisees = "";
           this.annuairesSupervises = "";
