@@ -24,7 +24,13 @@ public class OutputFileJPA {
     @UpdateTimestamp
     private LocalDateTime updateDateTime;
 
+    public OutputFileJPA(){}
+
     public OutputFileJPA(OutputFile outputFile) {
         this.outputFile = outputFile;
+    }
+
+    public OutputFile toOutputFile(){
+        return new OutputFile( id.toString(), this.outputFile.getNom(), this.outputFile.getPrenom(), this.outputFile.getEmail(), this.outputFile.getDomaine(),this.outputFile.getEquipe(),this.outputFile.getProfil(), this.outputFile.getCompetences());
     }
 }

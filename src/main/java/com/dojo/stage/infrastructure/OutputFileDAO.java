@@ -1,9 +1,10 @@
 package com.dojo.stage.infrastructure;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-
-public interface OutputFileDAO  extends JpaRepository<OutputFileJPA, Long> {
+@Repository
+public interface OutputFileDAO extends JpaRepository<OutputFileJPA, Long> {
 
 //    List<Library> findByType (Type type);
 //    List<Library> findByAddress_Number (int number);
