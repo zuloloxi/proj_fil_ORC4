@@ -108,6 +108,8 @@ public class OutputFile {
           this.commentaires = "";
      }
 
+     public OutputFile(){};
+
      public String getIdentifiant() {
           return identifiant;
      }
