@@ -1,4 +1,4 @@
-INSERT INTO "regles" VALUES
+INSERT INTO "regle" VALUES
     (1,'D7','BPF
 (donnée fournie par le code siège)','CONSEIL EN BANQUE PRIVEE PARTICULIER','ResBPFCBP','CBP[UO format XXXXX]Eq1','ConseilFrontBPF(X)
 "x" nom du Centre Banque Privée',NULL,NULL),
