@@ -31,6 +31,8 @@ public class CollaborateurJPA {
         this.collaborateur = collaborateur;
     }
 
+    Long getId() {return id;}
+
     public Collaborateur toCollaborateur(){
         return new Collaborateur(this.collaborateur.getUid(), this.collaborateur.getCivilite(),this.collaborateur.getNom(),
          this.collaborateur.getPrenom(),this.collaborateur.getFonction(),this.collaborateur.getTelephone(),

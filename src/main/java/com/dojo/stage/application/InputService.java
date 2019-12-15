@@ -20,4 +20,16 @@ public class InputService {
         return this.inputRepository.findAll();
     }
 
+    public Collaborateur getOneInput (Long id) {
+        return this.inputRepository.findOne(id);
+    }
+
+    public Long createInputs(Collaborateur newCollaborateur) {
+        return this.inputRepository.save(newCollaborateur);
+    }
+
+    public void deleteInputs (Long id) {
+        inputRepository.delete(id);
+    }
+
 }
