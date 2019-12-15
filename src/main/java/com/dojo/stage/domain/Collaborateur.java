@@ -25,7 +25,7 @@ public class Collaborateur {
     private String pj;
     private String aMigrer;
 
-    public void Collaborator(){}
+    public Collaborateur (){}
 
     public Collaborateur(String uid, String civilite, String nom, String prenom, String fonction, String telephone, String mail, String etage, String uoAffectation, String codeImmeubleEmplacementCollaborateur, String region, String codeRegion, String niveauTerritoirte, String codeTerritoire, String niveauEntite, String codeEntite, String niveauAgence, String codeAgence, String localisationCollaborateur, String pj, String aMigrer) {
         this.uid = uid;
