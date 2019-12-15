@@ -16,10 +16,10 @@ public final class OutputAdapter {
     }
 
     public static List<OutputFileDTO> adaptToLibraryDTOList(List<OutputFile> outputFiles) {
-        return outputFiles.stream().map(OutputAdapter::adaptToLibraryDTO).collect(Collectors.toList());
+        return outputFiles.stream().map(OutputAdapter::adaptToOutputFileDTO).collect(Collectors.toList());
     }
 
-    private static OutputFileDTO adaptToLibraryDTO(OutputFile outputFile) {
+    public static OutputFileDTO adaptToOutputFileDTO(OutputFile outputFile) {
         return new OutputFileDTO(
                 outputFile.getIdentifiant(),
                 outputFile.getNom(),

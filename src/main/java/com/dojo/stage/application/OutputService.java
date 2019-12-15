@@ -24,4 +24,15 @@ public class OutputService {
     public Long create(OutputFile newOutputFile) {
         return this.outputRepository.save(newOutputFile);
     }
+
+    public OutputFile obtain(Long id) {
+        return this.outputRepository.get(id);
+    }
+
+    public void remove(Long id){
+//        obtain(id);
+        outputRepository.delete(id);
+
+    }
+
 }
