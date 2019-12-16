@@ -27,7 +27,7 @@ public class Collaborateur {
 
     public Collaborateur (){}
 
-    public Collaborateur(String uid, String civilite, String nom, String prenom, String fonction, String telephone, String mail, String etage, String uoAffectation, String codeImmeubleEmplacementCollaborateur, String region, String codeRegion, String niveauTerritoirte, String codeTerritoire, String niveauEntite, String codeEntite, String niveauAgence, String codeAgence, String localisationCollaborateur, String pj, String aMigrer) {
+    public Collaborateur(String uid, String civilite, String nom, String prenom, String fonction, String telephone, String mail, String etage, String uoAffectation, String codeImmeubleEmplacementCollaborateur, String region, String codeRegion, String niveauTerritoire, String codeTerritoire, String niveauEntite, String codeEntite, String niveauAgence, String codeAgence, String localisationCollaborateur, String pj, String aMigrer) {
         this.uid = uid;
         this.civilite = civilite;
         this.nom = nom;
@@ -40,7 +40,7 @@ public class Collaborateur {
         this.codeImmeubleEmplacementCollaborateur = codeImmeubleEmplacementCollaborateur;
         this.region = region;
         this.codeRegion = codeRegion;
-        this.niveauTerritoire = niveauTerritoirte;
+        this.niveauTerritoire = niveauTerritoire;
         this.codeTerritoire = codeTerritoire;
         this.niveauEntite = niveauEntite;
         this.codeEntite = codeEntite;
