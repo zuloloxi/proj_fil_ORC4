@@ -24,7 +24,23 @@ public class CollaborateurJPA {
     @UpdateTimestamp
     private LocalDateTime updateDateTime;
 
+
+    public CollaborateurJPA() {}
+
     public CollaborateurJPA(Collaborateur collaborateur) {
         this.collaborateur = collaborateur;
+    }
+
+    Long getId() {return id;}
+
+    public Collaborateur toCollaborateur(){
+        return new Collaborateur(this.collaborateur.getUid(), this.collaborateur.getCivilite(),this.collaborateur.getNom(),
+         this.collaborateur.getPrenom(),this.collaborateur.getFonction(),this.collaborateur.getTelephone(),
+         this.collaborateur.getMail(),this.collaborateur.getEtage(),this.collaborateur.getUoAffectation(),
+         this.collaborateur.getCodeImmeubleEmplacementCollaborateur(),this.collaborateur.getRegion(),
+         this.collaborateur.getCodeRegion(),this.collaborateur.getNiveauTerritoire(),this.collaborateur.getCodeTerritoire(),
+         this.collaborateur.getNiveauEntite(),this.collaborateur.getCodeEntite(),
+         this.collaborateur.getNiveauAgence(),this.collaborateur.getCodeAgence(),
+         this.collaborateur.getLocalisationCollaborateur(),this.collaborateur.getPj(),this.collaborateur.getaMigrer());
     }
 }

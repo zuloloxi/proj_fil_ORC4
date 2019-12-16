@@ -1,5 +1,6 @@
 package com.dojo.stage.infrastructure;
 
+import com.dojo.stage.application.OutputService;
 import com.dojo.stage.domain.OutputFile;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -11,7 +12,7 @@ import java.time.LocalDateTime;
 public class OutputFileJPA {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="ID")
     private Long id;
 
@@ -24,7 +25,27 @@ public class OutputFileJPA {
     @UpdateTimestamp
     private LocalDateTime updateDateTime;
 
-    public OutputFileJPA(OutputFile outputFile) {
+    public OutputFileJPA(){}
+
+    OutputFileJPA(OutputFile outputFile) {
+//        this.id = getId();
         this.outputFile = outputFile;
+    }
+
+    Long getId() {
+        return id;
+    }
+
+    OutputFile toOutputFile(){
+        return new OutputFile(
+                this.outputFile.getIdentifiant(),
+                this.outputFile.getNom(),
+                this.outputFile.getPrenom(),
+                this.outputFile.getEmail(),
+                this.outputFile.getDomaine(),
+                this.outputFile.getEquipe(),
+                this.outputFile.getProfil(),
+                this.outputFile.getCompetences()
+        );
     }
 }
