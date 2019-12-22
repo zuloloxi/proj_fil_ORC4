@@ -108,7 +108,18 @@ public class OutputFile {
           this.commentaires = "";
      }
 
-     public OutputFile(){};
+     public OutputFile(){}
+
+     public void update(OutputFile outputFileWithNewInformation) {
+          this.identifiant = outputFileWithNewInformation.getIdentifiant();
+          this.nom = outputFileWithNewInformation.getNom();
+          this.prenom = outputFileWithNewInformation.getPrenom();
+          this.email = outputFileWithNewInformation.getEmail();
+          this.domaine = outputFileWithNewInformation.getDomaine();
+          this.equipe = outputFileWithNewInformation.getEquipe();
+          this.profil = outputFileWithNewInformation.getProfil();
+          this.competences = outputFileWithNewInformation.getCompetences();
+     }
 
      public String getIdentifiant() {
           return identifiant;

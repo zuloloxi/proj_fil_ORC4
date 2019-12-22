@@ -32,6 +32,11 @@ public class OutputResource {
         return OutputAdapter.adaptToOutputFileDTO(this.outputService.obtain(id));
     }
 
+    @RequestMapping(method = RequestMethod.PUT, path = {"/outputs/{id}"})
+    public void updateOutputFile(@PathVariable("id") Long id, @RequestBody OutputFileDTO outputFileDTO) {
+        this.outputService.update(id, OutputAdapter.transformToOutputFile(outputFileDTO));
+    }
+
     @RequestMapping(method = RequestMethod.DELETE, path = {"/outputs/{id}"})
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void removeOutput(@PathVariable("id") Long id) {
