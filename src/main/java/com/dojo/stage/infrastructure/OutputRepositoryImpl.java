@@ -27,6 +27,12 @@ public class OutputRepositoryImpl implements OutputRepository {
     }
 
     @Override
+    public Long update(OutputFile outputFile, Long id) {
+        OutputFileJPA outputFileJPA = outputFileDAO.save(new OutputFileJPA(outputFile, id));
+        return outputFileJPA.getId();
+    }
+
+    @Override
     public OutputFile get(Long id) {
         return outputFileDAO.findById(id).map(OutputFileJPA::toOutputFile).orElseThrow(() -> new MyProjectException(ErrorCodes.OUTPUT_NOT_FOUND));
     }

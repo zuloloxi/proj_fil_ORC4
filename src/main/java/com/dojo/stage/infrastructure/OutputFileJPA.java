@@ -13,7 +13,7 @@ public class OutputFileJPA {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="ID")
+    @Column(name="id")
     private Long id;
 
     @Embedded
@@ -28,12 +28,17 @@ public class OutputFileJPA {
     public OutputFileJPA(){}
 
     OutputFileJPA(OutputFile outputFile) {
-//        this.id = getId();
+        this.outputFile = outputFile;
+    }
+
+    // constructeur pour l'update
+    OutputFileJPA(OutputFile outputFile, Long id) {
+        this.id = id;
         this.outputFile = outputFile;
     }
 
     Long getId() {
-        return id;
+        return this.id;
     }
 
     OutputFile toOutputFile(){
