@@ -1,8 +1,5 @@
 package com.dojo.stage.domain;
 
-
-
-
 public class Competence {
     private String competence;
     private String decriptif;

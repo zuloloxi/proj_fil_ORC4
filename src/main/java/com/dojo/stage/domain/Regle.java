@@ -5,6 +5,8 @@ import java.util.Set;
 
 public class Regle {
 
+    private Long id;
+
     private String deploiement;
 
     private String metier;
@@ -23,7 +25,9 @@ public class Regle {
 
     private Set<Competence> competences;
 
-    public Regle(String deploiement, String metier, String posteType, String domaine, String stratesEquipes, String profil, String equipesSupervisees, String descriptifEquipesSupervisses, Set<Competence> competences) {
+
+    public Regle(Long id, String deploiement, String metier, String posteType, String domaine, String stratesEquipes, String profil, String equipesSupervisees, String descriptifEquipesSupervisses, Set<Competence> competences) {
+        this.id = id;
         this.deploiement = deploiement;
         this.metier = metier;
         this.posteType = posteType;
@@ -33,6 +37,10 @@ public class Regle {
         this.equipesSupervisees = equipesSupervisees;
         this.descriptifEquipesSupervisses = descriptifEquipesSupervisses;
         this.competences = competences;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getDeploiement() {
@@ -71,5 +79,31 @@ public class Regle {
         return competences;
     }
 
+    public void update (Regle regleForUpdate) {
+        this.deploiement = regleForUpdate.deploiement;
+        this.metier = regleForUpdate.metier;
+        this.posteType= regleForUpdate.posteType;
+        this.domaine = regleForUpdate.domaine;
+        this.stratesEquipes = regleForUpdate.stratesEquipes;
+        this.profil = regleForUpdate.profil;
+        this.equipesSupervisees = regleForUpdate.equipesSupervisees;
+        this.descriptifEquipesSupervisses = regleForUpdate.descriptifEquipesSupervisses;
+        this.competences = regleForUpdate.competences;
+    }
 
+    @Override
+    public String toString() {
+        return "Regle{" +
+                "id=" + id +
+                ", deploiement='" + deploiement + '\'' +
+                ", metier='" + metier + '\'' +
+                ", posteType='" + posteType + '\'' +
+                ", domaine='" + domaine + '\'' +
+                ", stratesEquipes='" + stratesEquipes + '\'' +
+                ", profil='" + profil + '\'' +
+                ", equipesSupervisees='" + equipesSupervisees + '\'' +
+                ", descriptifEquipesSupervisses='" + descriptifEquipesSupervisses + '\'' +
+                ", competences=" + competences +
+                '}';
+    }
 }

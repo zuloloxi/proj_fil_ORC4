@@ -43,6 +43,7 @@ public class RegleJPA {
     }
 
     public RegleJPA(Regle regle) {
+        this.id = regle.getId();
         this.deploiement = regle.getDeploiement();
         this.metier = regle.getMetier();
         this.posteType = regle.getDomaine();
@@ -100,5 +101,38 @@ public class RegleJPA {
 
     public LocalDateTime getUpdateDateTime() {
         return updateDateTime;
+    }
+
+    Regle toRegle(){
+        return new Regle(
+                this.id,
+                this.deploiement,
+                this.metier,
+                this.posteType,
+                this.domaine,
+                this.stratesEquipes,
+                this.profil,
+                this.equipesSupervisees,
+                this.descriptifEquipesSupervisses,
+                this.competences.stream().map(competenceJPA->new Competence(competenceJPA.getCompetence(),competenceJPA.getDecriptif()))
+                        .collect(Collectors.toSet())
+        );}
+
+    @Override
+    public String toString() {
+        return "RegleJPA{" +
+                "id=" + id +
+                ", deploiement='" + deploiement + '\'' +
+                ", metier='" + metier + '\'' +
+                ", posteType='" + posteType + '\'' +
+                ", domaine='" + domaine + '\'' +
+                ", stratesEquipes='" + stratesEquipes + '\'' +
+                ", profil='" + profil + '\'' +
+                ", equipesSupervisees='" + equipesSupervisees + '\'' +
+                ", descriptifEquipesSupervisses='" + descriptifEquipesSupervisses + '\'' +
+                ", competences=" + competences +
+                ", createDateTime=" + createDateTime +
+                ", updateDateTime=" + updateDateTime +
+                '}';
     }
 }
