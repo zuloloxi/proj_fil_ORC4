@@ -1,6 +1,5 @@
-INSERT (id , deploiement,  metier,  poste_type , domaine, strates_equipes,
-     profil, equipes_supervisees, descriptif_equipes_supervisses
-     create_date_time  ,     update_date_time )  INTO "regle" VALUES
+INSERT   INTO "regle" (id , deploiement,  metier,  poste_type , domaine, strates_equipes,
+     profil, equipes_supervisees, descriptif_equipes_supervisses) VALUES
     (1,'D7','BPF
 (donnée fournie par le code siège)','CONSEIL EN BANQUE PRIVEE PARTICULIER','ResBPFCBP','CBP[UO format XXXXX]Eq1','ConseilFrontBPF(X)
 "x" nom du Centre Banque Privée',NULL,NULL),
@@ -188,7 +187,7 @@ INSERT (id , deploiement,  metier,  poste_type , domaine, strates_equipes,
     (75,'D7',NULL,'RESPONSABLE SUPPORT','ResRetail',NULL,'Auditeur','ResTer[nom Territoire]','"Niveau Territoire"');
 
 
-INSERT (id,competence, decriptif , regle_id, create_date_time ,  update_date_time ) INTO "competence" VALUES
+INSERT  INTO "competence" (id,competence, decriptif , regle_id) VALUES
     (1,'C_BPF_CENTREBPF','Compétence Front Centre Banque Privé',1),
     (2,'C_BPF_CENTREBPF','Compétence Front Centre Banque Privé',2),
     (3,'C_BPF_CENTREBPF','Compétence Front Centre Banque Privé',3),
