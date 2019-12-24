@@ -31,7 +31,7 @@ public class RegleJPA {
     private String equipesSupervisees;
     @Column
     private String descriptifEquipesSupervisses;
-    @OneToMany(cascade=CascadeType.ALL)
+    @OneToMany(cascade=CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name="regle_id")
     private Set<CompetenceJPA> competences;
     @CreationTimestamp
