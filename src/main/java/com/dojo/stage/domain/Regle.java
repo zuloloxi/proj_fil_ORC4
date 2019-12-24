@@ -1,6 +1,6 @@
 package com.dojo.stage.domain;
 
-import javax.persistence.*;
+
 import java.util.Set;
 
 public class Regle {

@@ -134,4 +134,9 @@ public class Collaborateur {
     public String getaMigrer() {
         return aMigrer;
     }
+
+    public OutputFile toOutputFile (Regle regle) {
+    //    Regle regle = regleRepository.findByPosteType(this.fonction);
+        return  new OutputFile(this.uid, this.nom, this.prenom,this.mail,regle.getDomaine(), "ACODER", "ACODER","ACODER");
+    }
 }

@@ -15,32 +15,32 @@ public class RegleController {
     @Autowired
     private RegleService regleService;
 
-    @RequestMapping(method = RequestMethod.GET, path = {"/regle/"})
+    @RequestMapping(method = RequestMethod.GET, path = {"/regles/"})
     public List<Regle> getAll() {
         return this.regleService.getAll(); }
 
-    @RequestMapping(method = RequestMethod.GET, path = {"/regle/{id}"})
+    @RequestMapping(method = RequestMethod.GET, path = {"/regles/{id}"})
     public Regle getById(@PathVariable("id") Long id ) {
         return this.regleService.getById(id);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = {"/regle/posteType/{posteType}"})
+    @RequestMapping(method = RequestMethod.GET, path = {"/regles/posteType/{posteType}"})
     public Regle getByPosteType(@PathVariable("posteType") String posteType  ) {
         return this.regleService.getRegleByPosteType(posteType);
     }
 
-    @RequestMapping(method = RequestMethod.POST, path = {"/regle"})
+    @RequestMapping(method = RequestMethod.POST, path = {"/regles"})
     @ResponseStatus(HttpStatus.CREATED)
     public Regle create(@Valid @RequestBody Regle regle) {
         return this.regleService.create(regle);
     }
 
-    @RequestMapping(method = RequestMethod.PUT, path = {"/regle/{id}"})
+    @RequestMapping(method = RequestMethod.PUT, path = {"/regles/{id}"})
     public Regle update(@Valid @RequestBody Regle regle, @PathVariable("id") Long id) {
         return this.regleService.update(regle, id);
     }
 
-    @RequestMapping(method = RequestMethod.DELETE, path = {"/regle/{id}"})
+    @RequestMapping(method = RequestMethod.DELETE, path = {"/regles/{id}"})
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable("id") Long id) {
         this.regleService.delete(id);
