@@ -34,6 +34,12 @@ public class InputRepositoryImpl implements InputRepository {
     }
 
     @Override
+    public Long update(Long id, Collaborateur collaborateur) {
+        CollaborateurJPA collaborateurJPA = collaborateurDAO.save(new CollaborateurJPA(id,collaborateur));
+        return collaborateurJPA.getId();
+    }
+
+    @Override
     public void delete(Long id) {
         collaborateurDAO.deleteById(id);
     }

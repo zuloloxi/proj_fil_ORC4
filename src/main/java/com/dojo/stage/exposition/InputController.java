@@ -2,7 +2,6 @@ package com.dojo.stage.exposition;
 
 
 import com.dojo.stage.application.InputService;
-import com.dojo.stage.domain.Collaborateur;
 import com.dojo.stage.domain.OutputFile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,28 +17,33 @@ public class InputController {
     private InputService inputService;
 
     @RequestMapping(method = RequestMethod.GET, path = {"/inputs/"})
-    public List<Collaborateur> getAllInputs() {
-        return this.inputService.getAllInputs(); }
+    public List<CollaborateurDTO> findAll() {
+        return CollaborateurMapper.mapToCollaborateurDTOList(this.inputService.getAllInputs());
+    }
 
 
     @RequestMapping(method = RequestMethod.GET, path = {"/inputs/{id}"})
-    public Collaborateur getOneInput(@PathVariable("id") Long id) {
-        return this.inputService.getOneInput(id);
+    public CollaborateurDTO findOne(@PathVariable("id") Long id) {
+        return CollaborateurMapper.mapToCollaborateurDTO(this.inputService.getOneInput(id));
     }
-
 
     @RequestMapping(method = RequestMethod.POST, path = {"/inputs"})
     @ResponseStatus(HttpStatus.CREATED)
-    public Long createInputs(@Valid @RequestBody Collaborateur collaborateur) {
-        return this.inputService.createInputs(collaborateur);
+    public Long create(@Valid @RequestBody CollaborateurDTO collaborateurDTO) {
+        return this.inputService.createInputs(CollaborateurMapper.mapToCollaborateur(collaborateurDTO));
     }
 
+    @RequestMapping(method = RequestMethod.PUT, path = {"/inputs/{id}"})
+    public void updateOne(@PathVariable("id") Long id, @RequestBody CollaborateurDTO collaborateurDTO) {
+        this.inputService.updateInput(id, CollaborateurMapper.mapToCollaborateur(collaborateurDTO));
+    }
 
     @RequestMapping(method = RequestMethod.DELETE, path = {"/inputs/{id}"})
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteInputs(@PathVariable("id") Long id) {
+    public void delete(@PathVariable("id") Long id) {
         this.inputService.deleteInputs(id);
     }
+
 
     @RequestMapping(method = RequestMethod.GET, path = {"/inputs/transform/{id}"})
     public OutputFile getOneInputToTransform(@PathVariable("id") Long id) {

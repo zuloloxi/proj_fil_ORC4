@@ -32,6 +32,12 @@ public class InputService {
         return this.inputRepository.save(newCollaborateur);
     }
 
+    public void updateInput(Long id, Collaborateur updatedCollaborateur) {
+        Collaborateur collaborateur = getOneInput(id);
+        collaborateur.update(updatedCollaborateur);
+        this.inputRepository.update(id,collaborateur);
+    }
+
     public void deleteInputs (Long id) {
         inputRepository.delete(id);
     }

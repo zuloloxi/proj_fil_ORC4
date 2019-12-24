@@ -18,6 +18,7 @@ public class CollaborateurJPA {
     @Embedded
     private Collaborateur collaborateur;
 
+
     @CreationTimestamp
     private LocalDateTime createDateTime;
 
@@ -28,6 +29,11 @@ public class CollaborateurJPA {
     public CollaborateurJPA() {}
 
     public CollaborateurJPA(Collaborateur collaborateur) {
+        this.collaborateur = collaborateur;
+    }
+
+    public CollaborateurJPA(Long id, Collaborateur collaborateur) {
+        this.id = id;
         this.collaborateur = collaborateur;
     }
 

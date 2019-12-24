@@ -51,6 +51,31 @@ public class Collaborateur {
         this.aMigrer = aMigrer;
     }
 
+    public void update(Collaborateur updatedCollaborateur) {
+        this.civilite = updatedCollaborateur.getCivilite();
+        this.nom = updatedCollaborateur.getNom();
+        this.prenom = updatedCollaborateur.getPrenom();
+        this.fonction = updatedCollaborateur.getFonction();
+        this.telephone = updatedCollaborateur.getTelephone();
+        this.mail = updatedCollaborateur.getMail();
+        this.etage = updatedCollaborateur.getEtage();
+        this.uoAffectation = updatedCollaborateur.getUoAffectation();
+        this.codeImmeubleEmplacementCollaborateur = updatedCollaborateur.getCodeImmeubleEmplacementCollaborateur();
+        this.region = updatedCollaborateur.getRegion();
+        this.codeRegion = updatedCollaborateur.getCodeRegion();
+        this.niveauTerritoire = updatedCollaborateur.getNiveauTerritoire();
+        this.codeTerritoire = updatedCollaborateur.getCodeTerritoire();
+        this.niveauEntite = updatedCollaborateur.getNiveauEntite();
+        this.codeEntite = updatedCollaborateur.getCodeEntite();
+        this.niveauAgence = updatedCollaborateur.getNiveauAgence();
+        this.codeAgence = updatedCollaborateur.getCodeAgence();
+        this.localisationCollaborateur = updatedCollaborateur.getLocalisationCollaborateur();
+        this.pj = updatedCollaborateur.getPj();
+        this.aMigrer = updatedCollaborateur.getaMigrer();
+    }
+
+
+
     public String getUid() {
         return uid;
     }
