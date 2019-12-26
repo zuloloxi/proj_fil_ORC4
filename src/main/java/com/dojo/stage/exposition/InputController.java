@@ -2,7 +2,7 @@ package com.dojo.stage.exposition;
 
 
 import com.dojo.stage.application.InputService;
-import com.dojo.stage.domain.OutputFile;
+import com.dojo.stage.domain.Output;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -46,7 +46,7 @@ public class InputController {
 
 
     @RequestMapping(method = RequestMethod.GET, path = {"/inputs/transform/{id}"})
-    public OutputFile getOneInputToTransform(@PathVariable("id") Long id) {
+    public Output getOneInputToTransform(@PathVariable("id") Long id) {
         return this.inputService.toOutput(id);
     }
 

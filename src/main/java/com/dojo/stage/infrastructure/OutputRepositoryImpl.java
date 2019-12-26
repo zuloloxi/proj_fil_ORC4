@@ -1,6 +1,6 @@
 package com.dojo.stage.infrastructure;
 
-import com.dojo.stage.domain.OutputFile;
+import com.dojo.stage.domain.Output;
 import com.dojo.stage.domain.OutputRepository;
 import com.dojo.stage.domain.exception.ErrorCodes;
 import com.dojo.stage.domain.exception.MyProjectException;
@@ -16,29 +16,34 @@ public class OutputRepositoryImpl implements OutputRepository {
     private OutputFileDAO outputFileDAO;
 
     @Override
-    public List<OutputFile> findAll() {
+    public List<Output> findAll() {
         return outputFileDAO.findAll().stream().map(OutputFileJPA::toOutputFile).collect(Collectors.toList());
     }
 
     @Override
-    public Long save(OutputFile outputFile) {
-        OutputFileJPA outputFileJPA = outputFileDAO.save(new OutputFileJPA(outputFile));
+    public Long save(Output output) {
+        OutputFileJPA outputFileJPA = outputFileDAO.save(new OutputFileJPA(output));
         return outputFileJPA.getId();
     }
 
     @Override
-    public Long update(OutputFile outputFile, Long id) {
-        OutputFileJPA outputFileJPA = outputFileDAO.save(new OutputFileJPA(outputFile, id));
+    public Long update(Output output, Long id) {
+        OutputFileJPA outputFileJPA = outputFileDAO.save(new OutputFileJPA(output, id));
         return outputFileJPA.getId();
     }
 
     @Override
-    public OutputFile get(Long id) {
+    public Output get(Long id) {
         return outputFileDAO.findById(id).map(OutputFileJPA::toOutputFile).orElseThrow(() -> new MyProjectException(ErrorCodes.OUTPUT_NOT_FOUND));
     }
 
     @Override
     public void delete(Long id) {
         outputFileDAO.deleteById(id);
+    }
+
+    @Override
+    public void deleteAll() {
+        outputFileDAO.deleteAll();
     }
 }

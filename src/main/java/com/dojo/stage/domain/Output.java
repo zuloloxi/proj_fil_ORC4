@@ -1,7 +1,7 @@
 package com.dojo.stage.domain;
 
 
-public class OutputFile {
+public class Output {
 
      private String action ;
      private String identifiant ;
@@ -55,7 +55,7 @@ public class OutputFile {
      private String commentaires ;
 
      
-     public OutputFile(String identifiant, String nom, String prenom, String email, String domaine, String equipe, String profil, String competences) {
+     public Output(String identifiant, String nom, String prenom, String email, String domaine, String equipe, String profil, String competences) {
           this.action = "";
           this.identifiant = identifiant;
           this.nom = nom;
@@ -108,17 +108,17 @@ public class OutputFile {
           this.commentaires = "";
      }
 
-     public OutputFile(){}
+     public Output(){}
 
-     public void update(OutputFile outputFileWithNewInformation) {
-          this.identifiant = outputFileWithNewInformation.getIdentifiant();
-          this.nom = outputFileWithNewInformation.getNom();
-          this.prenom = outputFileWithNewInformation.getPrenom();
-          this.email = outputFileWithNewInformation.getEmail();
-          this.domaine = outputFileWithNewInformation.getDomaine();
-          this.equipe = outputFileWithNewInformation.getEquipe();
-          this.profil = outputFileWithNewInformation.getProfil();
-          this.competences = outputFileWithNewInformation.getCompetences();
+     public void update(Output outputWithNewInformation) {
+          this.identifiant = outputWithNewInformation.getIdentifiant();
+          this.nom = outputWithNewInformation.getNom();
+          this.prenom = outputWithNewInformation.getPrenom();
+          this.email = outputWithNewInformation.getEmail();
+          this.domaine = outputWithNewInformation.getDomaine();
+          this.equipe = outputWithNewInformation.getEquipe();
+          this.profil = outputWithNewInformation.getProfil();
+          this.competences = outputWithNewInformation.getCompetences();
      }
 
      public String getIdentifiant() {

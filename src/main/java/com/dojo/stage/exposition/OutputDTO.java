@@ -2,7 +2,7 @@ package com.dojo.stage.exposition;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class OutputFileDTO {
+public class OutputDTO {
 //    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
 //    String id;
 
@@ -30,10 +30,10 @@ public class OutputFileDTO {
     @JsonProperty
     String competences;
 
-    public OutputFileDTO() {}
+    public OutputDTO() {}
 
-    public OutputFileDTO(String identifiant, String nom, String prenom, String email, String domaine,
-                         String equipe, String profil, String competences) {
+    OutputDTO(String identifiant, String nom, String prenom, String email, String domaine,
+              String equipe, String profil, String competences) {
         this.identifiant = identifiant;
         this.nom = nom;
         this.prenom = prenom;

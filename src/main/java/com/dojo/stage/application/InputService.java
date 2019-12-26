@@ -2,7 +2,7 @@ package com.dojo.stage.application;
 
 import com.dojo.stage.domain.Collaborateur;
 import com.dojo.stage.domain.InputRepository;
-import com.dojo.stage.domain.OutputFile;
+import com.dojo.stage.domain.Output;
 import com.dojo.stage.domain.RegleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,9 +42,9 @@ public class InputService {
         inputRepository.delete(id);
     }
 
-    public OutputFile toOutput (Long id) {
+    public Output toOutput (Long id) {
         Collaborateur collaborateurToTransform = inputRepository.findOne(id);
-        return collaborateurToTransform.toOutputFile(regleRepository.findByPosteType(collaborateurToTransform.getFonction()));
+        return collaborateurToTransform.toOutput(regleRepository.findByPosteType(collaborateurToTransform.getFonction()));
 
     }
 

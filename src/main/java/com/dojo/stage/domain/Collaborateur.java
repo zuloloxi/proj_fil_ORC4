@@ -160,8 +160,8 @@ public class Collaborateur {
         return aMigrer;
     }
 
-    public OutputFile toOutputFile (Regle regle) {
+    public Output toOutput (Regle regle) {
     //    Regle regle = regleRepository.findByPosteType(this.fonction);
-        return  new OutputFile(this.uid, this.nom, this.prenom,this.mail,regle.getDomaine(), "ACODER", "ACODER","ACODER");
+        return  new Output(this.uid, this.nom, this.prenom,this.mail,regle.getDomaine(), "ACODER", "ACODER","ACODER");
     }
 }

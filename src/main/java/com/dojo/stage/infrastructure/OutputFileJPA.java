@@ -1,7 +1,6 @@
 package com.dojo.stage.infrastructure;
 
-import com.dojo.stage.application.OutputService;
-import com.dojo.stage.domain.OutputFile;
+import com.dojo.stage.domain.Output;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -17,7 +16,7 @@ public class OutputFileJPA {
     private Long id;
 
     @Embedded
-    private OutputFile outputFile;
+    private Output output;
 
     @CreationTimestamp
     private LocalDateTime createDateTime;
@@ -27,30 +26,30 @@ public class OutputFileJPA {
 
     public OutputFileJPA(){}
 
-    OutputFileJPA(OutputFile outputFile) {
-        this.outputFile = outputFile;
+    OutputFileJPA(Output output) {
+        this.output = output;
     }
 
     // constructeur pour l'update
-    OutputFileJPA(OutputFile outputFile, Long id) {
+    OutputFileJPA(Output output, Long id) {
         this.id = id;
-        this.outputFile = outputFile;
+        this.output = output;
     }
 
     Long getId() {
         return this.id;
     }
 
-    OutputFile toOutputFile(){
-        return new OutputFile(
-                this.outputFile.getIdentifiant(),
-                this.outputFile.getNom(),
-                this.outputFile.getPrenom(),
-                this.outputFile.getEmail(),
-                this.outputFile.getDomaine(),
-                this.outputFile.getEquipe(),
-                this.outputFile.getProfil(),
-                this.outputFile.getCompetences()
+    Output toOutputFile(){
+        return new Output(
+                this.output.getIdentifiant(),
+                this.output.getNom(),
+                this.output.getPrenom(),
+                this.output.getEmail(),
+                this.output.getDomaine(),
+                this.output.getEquipe(),
+                this.output.getProfil(),
+                this.output.getCompetences()
         );
     }
 }
