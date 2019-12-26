@@ -10,12 +10,12 @@ public final class OutputAdapter {
 
     private OutputAdapter() {}
 
-    static OutputFile transformToOutputFile(OutputFileDTO outputFileDTO) {
+    public static OutputFile transformToOutputFile(OutputFileDTO outputFileDTO) {
         return new OutputFile(outputFileDTO.identifiant, outputFileDTO.nom, outputFileDTO.prenom, outputFileDTO.email, outputFileDTO.domaine,
                 outputFileDTO.equipe, outputFileDTO.profil, outputFileDTO.competences);
     }
 
-    public static List<OutputFileDTO> adaptToLibraryDTOList(List<OutputFile> outputFiles) {
+    public static List<OutputFileDTO> adaptToOutputDTOList(List<OutputFile> outputFiles) {
         return outputFiles.stream().map(OutputAdapter::adaptToOutputFileDTO).collect(Collectors.toList());
     }
 

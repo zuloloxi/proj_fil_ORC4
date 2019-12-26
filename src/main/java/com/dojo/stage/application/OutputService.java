@@ -15,7 +15,7 @@ public class OutputService {
     @Autowired
     private OutputRepository outputRepository;
 
-    public List<OutputFile> listAll() {
+    public List<OutputFile> getAllOutputs() {
         return this.outputRepository.findAll();
     }
 
