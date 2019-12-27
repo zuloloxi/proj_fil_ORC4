@@ -42,11 +42,11 @@ public class RegleJPA {
     public RegleJPA() {
     }
 
-    public RegleJPA(Regle regle) {
+    RegleJPA(Regle regle) {
         this.id = regle.getId();
         this.deploiement = regle.getDeploiement();
         this.metier = regle.getMetier();
-        this.posteType = regle.getDomaine();
+        this.posteType = regle.getPosteType();
         this.domaine = regle.getDomaine();
         this.stratesEquipes = regle.getStratesEquipes();
         this.profil = regle.getProfil();

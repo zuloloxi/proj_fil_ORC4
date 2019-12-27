@@ -2,6 +2,7 @@ package com.dojo.stage.domain;
 
 
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Regle {
 
@@ -77,6 +78,13 @@ public class Regle {
 
     public Set<Competence> getCompetences() {
         return competences;
+    }
+
+    String buildCompetences(){
+        return this.getCompetences()
+                .stream()
+                .map(x -> x.getCompetence() + "|1|1|PHONE|INCOMING")
+                .collect(Collectors.joining(","));
     }
 
     public void update (Regle regleForUpdate) {

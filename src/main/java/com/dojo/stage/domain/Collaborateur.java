@@ -1,6 +1,10 @@
 package com.dojo.stage.domain;
 
 
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+
 public class Collaborateur {
 
     private String uid;
@@ -161,7 +165,6 @@ public class Collaborateur {
     }
 
     public Output toOutput (Regle regle) {
-    //    Regle regle = regleRepository.findByPosteType(this.fonction);
-        return  new Output(this.uid, this.nom, this.prenom,this.mail,regle.getDomaine(), "ACODER", "ACODER","ACODER");
+        return  new Output(this.uid, this.nom, this.prenom,this.mail,regle.getDomaine(), "ACODER", "ACODER",regle.buildCompetences());
     }
 }
