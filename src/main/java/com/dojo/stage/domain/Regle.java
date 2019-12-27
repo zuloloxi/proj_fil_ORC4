@@ -83,7 +83,7 @@ public class Regle {
     }
 
     String buildCompetences(){
-        return this.getCompetences()
+        return this.getCompetences().isEmpty() ? "NO SKILLS MATCHES":this.getCompetences()
                 .stream()
                 .map(x -> x.getCompetence() + "|1|1|PHONE|INCOMING")
                 .collect(Collectors.joining(","));
