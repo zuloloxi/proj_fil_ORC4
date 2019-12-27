@@ -18,7 +18,7 @@ public class RegleRepositoryImpl implements RegleRepository {
 
     @Override
     public List<Regle> findAll() {
-        return regleDAO.findAll().stream().map(regleJPA -> regleJPA.toRegle()).collect(Collectors.toList());
+        return regleDAO.findAll().stream().map(RegleJPA::toRegle).collect(Collectors.toList());
     }
 
     @Override
@@ -28,6 +28,16 @@ public class RegleRepositoryImpl implements RegleRepository {
                     .toRegle();
         } else {
             throw new MyProjectException(ErrorCodes.REGLE_NOT_FOUND);
+        }
+    }
+
+    @Override
+    public Regle findByPosteTypeSTP(String posteType) {
+        if (regleDAO.findByPosteType(posteType).size() != 0) {
+            return regleDAO.findByPosteType(posteType).get(0)
+                    .toRegle();
+        } else {
+            return regleDAO.findByPosteType("Not found").get(0).toRegle();
         }
     }
 
