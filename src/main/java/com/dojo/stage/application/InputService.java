@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -45,7 +46,13 @@ public class InputService {
     public Output toOutput (Long id) {
         Collaborateur collaborateurToTransform = inputRepository.findOne(id);
         return collaborateurToTransform.toOutput(regleRepository.findByPosteType(collaborateurToTransform.getFonction()));
-
     }
 
+    public List<Output> toOutputs () {
+        List<Collaborateur> CollaborateursToTransform = inputRepository.findAll();
+        return CollaborateursToTransform
+                .stream().map(collaborateur -> collaborateur.toOutput(regleRepository.findByPosteType(collaborateur.getFonction())))
+//                .limit((530))
+                .collect(Collectors.toList());
+    }
 }

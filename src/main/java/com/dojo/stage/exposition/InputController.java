@@ -50,4 +50,9 @@ public class InputController {
         return this.inputService.toOutput(id);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = {"/inputs/transform"})
+    public List<Output> transformAllInputs() {
+        return this.inputService.toOutputs();
+    }
+
 }
