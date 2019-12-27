@@ -165,6 +165,6 @@ public class Collaborateur {
     }
 
     public Output toOutput (Regle regle) {
-        return  new Output(this.uid, this.nom, this.prenom,this.mail,regle.getDomaine(), "ACODER", "ACODER",regle.buildCompetences());
+        return  new Output(this.uid, this.nom, this.prenom,this.mail,regle.getDomaine(), "ACODER", regle.buildProfil(this.getNiveauTerritoire()),regle.buildCompetences());
     }
 }

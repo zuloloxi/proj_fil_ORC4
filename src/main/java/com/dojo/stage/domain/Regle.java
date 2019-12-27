@@ -1,6 +1,8 @@
 package com.dojo.stage.domain;
 
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -85,6 +87,11 @@ public class Regle {
                 .stream()
                 .map(x -> x.getCompetence() + "|1|1|PHONE|INCOMING")
                 .collect(Collectors.joining(","));
+    }
+
+    String buildProfil(String getNiveauTerritoire){
+        List<String> liste = Arrays.asList(this.getProfil().split("(\\(X\\))"));
+        return  liste.size() > 1 ? liste.get(0) + "(" + getNiveauTerritoire + ")" :getProfil() ;
     }
 
     public void update (Regle regleForUpdate) {
