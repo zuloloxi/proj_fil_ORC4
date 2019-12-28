@@ -185,7 +185,7 @@ INSERT   INTO "regle" (id , deploiement,  metier,  poste_type , domaine, strates
     (73,'D7',NULL,'RESPONSABLE PRO-TPE NIVEAU REGION','ResRetail',NULL,'Auditeur','ResReg[nom région]','"Niveau Région"'),
     (74,'D7',NULL,'RESPONSABLE PRO-TPE NIVEAU TERRITOIRE','ResRetail',NULL,'Auditeur','ResTer[nom Territoire]','"Niveau Territoire"'),
     (75,'D7',NULL,'RESPONSABLE SUPPORT','ResRetail',NULL,'Auditeur','ResTer[nom Territoire]','"Niveau Territoire"'),
-    (76,'D7',NULL,'Rejet : Pas de correspondance avec le poste type','Rejet : Pas de correspondance avec le poste type',NULL,'Rejet : Pas de correspondance avec le profil',NULL,NULL);
+    (76,'D7',NULL,'NO MATCH FOUND','ERREUR 001 : PAS DE CORRESPONDANCE AVEC LE POSTE TYPE',NULL,'ERREUR 002 : PAS DE CORRESPONDANCE AVEC LE PROFIL',NULL,NULL);
 
 
 INSERT  INTO "competence" (id,competence, decriptif , regle_id) VALUES

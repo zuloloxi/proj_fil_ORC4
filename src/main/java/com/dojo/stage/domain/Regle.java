@@ -2,9 +2,7 @@ package com.dojo.stage.domain;
 
 
 import javax.validation.constraints.Null;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Regle {
@@ -60,7 +58,7 @@ public class Regle {
     }
 
     public String getDomaine() {
-        return domaine;
+        return domaine == null ? "":domaine;
     }
 
     public String getStratesEquipes() {
@@ -84,7 +82,7 @@ public class Regle {
     }
 
     String buildCompetences(){
-        return this.getCompetences().isEmpty() ? "NO SKILLS MATCHES":this.getCompetences()
+        return this.getCompetences().isEmpty() ? "ERREUR 007 : NO SKILLS MATCHES":this.getCompetences()
                 .stream()
                 .map(x -> x.getCompetence() + "|1|1|PHONE|INCOMING")
                 .collect(Collectors.joining(","));
@@ -92,24 +90,25 @@ public class Regle {
 
     String buildProfil(String getNiveauEntite){
         if (getNiveauEntite.isEmpty()) {
-            return "Rejet : NIVEAU ENTITE NON RENSEIGNE";
+            return "ERREUR 003 : NIVEAU ENTITE NON RENSEIGNE";
         }
         List<String> liste = Arrays.asList(this.getProfil().split("(\\(X\\))"));
-        return  liste.size() > 1 ? liste.get(0) + getNiveauEntite.charAt(getNiveauEntite.length()-1) : getProfil() ;
+        return  liste.size() > 1 ? liste.get(0) + "(" + getNiveauEntite + ")" : getProfil() ;
     }
 
-    String buildTeam(String getCodeAgence, String getNiveauEntite){
-        if (getCodeAgence.isEmpty()){
-            return "Rejet : CODE AGENCE NON RENSEIGNE";
-        }
+    String buildTeam(String getNiveauEntite, String getCodeAgence){
         if (getNiveauEntite.isEmpty()){
-            return "Rejet : NIVEAU ENTITE NON RENSEIGNE";
+            return "ERREUR 003 : NIVEAU ENTITE NON RENSEIGNE";
+        }
+        if (getCodeAgence.isEmpty()){
+            return "ERREUR 004 : CODE AGENCE NON RENSEIGNE";
         }
         if (getStratesEquipes().isEmpty() || getStratesEquipes() == null || getStratesEquipes().equals("")){
-            return "Rejet : STRATES EQUIPE NON RENSEIGNEES";
+            return "ERREUR 005 : STRATES EQUIPE NON RENSEIGNEES";
         }
         List<String> liste = Arrays.asList(this.getStratesEquipes().split("\\+?\\[UO format XXXXX\\]"));
-        return  liste.size() > 1 ? liste.get(0) + getCodeAgence.substring(0,5) + "Eq" + getNiveauEntite.charAt(getNiveauEntite.length()-1): liste.get(0) + getCodeAgence.substring(0,5);
+        String teamNumber =  Character.isDigit(getNiveauEntite.charAt(getNiveauEntite.length()-1)) ? String.valueOf(getNiveauEntite.charAt(getNiveauEntite.length()-1)) :"";
+        return  liste.size() > 1 ? teamNumber.isEmpty() ? "ERREUR 006 : NUMERO EQUIPE NON RENSEIGNE":liste.get(0) + getCodeAgence.substring(0,5) + "Eq" + teamNumber : liste.get(0) + getCodeAgence.substring(0,5);
     }
 
     public void update (Regle regleForUpdate) {
