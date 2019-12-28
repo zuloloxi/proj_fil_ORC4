@@ -16,11 +16,10 @@ public class InputController {
     @Autowired
     private InputService inputService;
 
-    @RequestMapping(method = RequestMethod.GET, path = {"/inputs/"})
+    @RequestMapping(method = RequestMethod.GET, path = {"/inputs"})
     public List<CollaborateurDTO> findAll() {
         return CollaborateurMapper.mapToCollaborateurDTOList(this.inputService.getAllInputs());
     }
-
 
     @RequestMapping(method = RequestMethod.GET, path = {"/inputs/{id}"})
     public CollaborateurDTO findOne(@PathVariable("id") Long id) {
@@ -44,6 +43,11 @@ public class InputController {
         this.inputService.deleteInputs(id);
     }
 
+    @RequestMapping(method = RequestMethod.DELETE, path = {"/inputs"})
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteAll() {
+        this.inputService.deleteAllInputs();
+    }
 
     @RequestMapping(method = RequestMethod.GET, path = {"/inputs/transform/{id}"})
     public Output getOneInputToTransform(@PathVariable("id") Long id) {

@@ -9,5 +9,6 @@ public interface InputRepository {
     Long save (Collaborateur collaborateur);
     Long update(Long id, Collaborateur collaborateur);
     void delete(Long id);
+    void deleteAll();
 
 }

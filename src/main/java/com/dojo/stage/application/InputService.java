@@ -40,7 +40,11 @@ public class InputService {
     }
 
     public void deleteInputs (Long id) {
-        inputRepository.delete(id);
+        this.inputRepository.delete(id);
+    }
+
+    public void deleteAllInputs () {
+        this.inputRepository.deleteAll();
     }
 
     public Output toOutput (Long id) {
