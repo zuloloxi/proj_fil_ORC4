@@ -137,7 +137,7 @@ public class Collaborateur {
     }
 
     public String getNiveauEntite() {
-        return niveauEntite;
+        return niveauEntite == null ? "":niveauEntite;
     }
 
     public String getCodeEntite() {
@@ -149,7 +149,7 @@ public class Collaborateur {
     }
 
     public String getCodeAgence() {
-        return codeAgence;
+        return codeAgence == null ? "":codeAgence;
     }
 
     public String getLocalisationCollaborateur() {
@@ -165,6 +165,6 @@ public class Collaborateur {
     }
 
     public Output toOutput (Regle regle) {
-        return  new Output(this.uid, this.nom, this.prenom,this.mail,regle.getDomaine(), "ACODER", regle.buildProfil(this.getNiveauTerritoire()),regle.buildCompetences());
+        return  new Output(this.uid, this.nom, this.prenom,this.mail,regle.getDomaine(), regle.buildTeam(this.getCodeAgence(),this.getNiveauEntite()), regle.buildProfil(this.getNiveauEntite()),regle.buildCompetences());
     }
 }

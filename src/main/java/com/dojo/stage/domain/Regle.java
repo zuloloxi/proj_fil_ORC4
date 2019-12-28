@@ -1,6 +1,7 @@
 package com.dojo.stage.domain;
 
 
+import javax.validation.constraints.Null;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
@@ -63,7 +64,7 @@ public class Regle {
     }
 
     public String getStratesEquipes() {
-        return stratesEquipes;
+        return stratesEquipes == null ? "":stratesEquipes;
     }
 
     public String getProfil() {
@@ -89,9 +90,26 @@ public class Regle {
                 .collect(Collectors.joining(","));
     }
 
-    String buildProfil(String getNiveauTerritoire){
+    String buildProfil(String getNiveauEntite){
+        if (getNiveauEntite.isEmpty()) {
+            return "Rejet : NIVEAU ENTITE NON RENSEIGNE";
+        }
         List<String> liste = Arrays.asList(this.getProfil().split("(\\(X\\))"));
-        return  liste.size() > 1 ? liste.get(0) + "(" + getNiveauTerritoire + ")" :getProfil() ;
+        return  liste.size() > 1 ? liste.get(0) + getNiveauEntite.charAt(getNiveauEntite.length()-1) : getProfil() ;
+    }
+
+    String buildTeam(String getCodeAgence, String getNiveauEntite){
+        if (getCodeAgence.isEmpty()){
+            return "Rejet : CODE AGENCE NON RENSEIGNE";
+        }
+        if (getNiveauEntite.isEmpty()){
+            return "Rejet : NIVEAU ENTITE NON RENSEIGNE";
+        }
+        if (getStratesEquipes().isEmpty() || getStratesEquipes() == null || getStratesEquipes().equals("")){
+            return "Rejet : STRATES EQUIPE NON RENSEIGNEES";
+        }
+        List<String> liste = Arrays.asList(this.getStratesEquipes().split("\\+?\\[UO format XXXXX\\]"));
+        return  liste.size() > 1 ? liste.get(0) + getCodeAgence.substring(0,5) + "Eq" + getNiveauEntite.charAt(getNiveauEntite.length()-1): liste.get(0) + getCodeAgence.substring(0,5);
     }
 
     public void update (Regle regleForUpdate) {

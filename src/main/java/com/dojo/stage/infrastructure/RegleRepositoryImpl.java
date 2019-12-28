@@ -37,7 +37,7 @@ public class RegleRepositoryImpl implements RegleRepository {
             return regleDAO.findByPosteType(posteType).get(0)
                     .toRegle();
         } else {
-            return regleDAO.findByPosteType("Not found").get(0).toRegle();
+            return regleDAO.findByPosteType("Rejet : Pas de correspondance avec le poste type").get(0).toRegle();
         }
     }
 
