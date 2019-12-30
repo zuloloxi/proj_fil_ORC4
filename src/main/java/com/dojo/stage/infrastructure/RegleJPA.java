@@ -7,6 +7,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -31,8 +32,14 @@ public class RegleJPA {
     private String equipesSupervisees;
     @Column
     private String descriptifEquipesSupervisses;
-    @OneToMany(cascade=CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name="regle_id")
+//    @OneToMany(cascade=CascadeType.ALL, orphanRemoval = true)
+//    @JoinColumn(name="regle_id")
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(
+            name="regle_has_competences",
+            joinColumns = @JoinColumn(name = "regle_id"),
+            inverseJoinColumns = @JoinColumn(name = "competence_id")
+    )
     private Set<CompetenceJPA> competences;
     @CreationTimestamp
     private LocalDateTime createDateTime;
@@ -52,7 +59,18 @@ public class RegleJPA {
         this.profil = regle.getProfil();
         this.equipesSupervisees = regle.getEquipesSupervisees();
         this.descriptifEquipesSupervisses = regle.getDescriptifEquipesSupervisses();
+        this.competences = searchCompetence(regle.getCompetences());
         this.competences = regle.getCompetences().stream().map(CompetenceJPA::new).collect(Collectors.toSet());
+    }
+
+    private Set<CompetenceJPA> searchCompetence(Set<Competence> competences) {
+        Set<CompetenceJPA> competencesJPA = new HashSet<>();
+//        CompetenceJPA toot =
+//        à adapter
+        for (Competence competence : competences) {
+            competencesJPA.add(new CompetenceJPA(2L, competence));
+        }
+        return competencesJPA;
     }
 
     public Long getId() {
@@ -114,7 +132,7 @@ public class RegleJPA {
                 this.profil,
                 this.equipesSupervisees,
                 this.descriptifEquipesSupervisses,
-                this.competences.stream().map(competenceJPA->new Competence(competenceJPA.getCompetence(),competenceJPA.getDecriptif()))
+                this.competences.stream().map(competenceJPA->new Competence(competenceJPA.getId(),competenceJPA.getCompetence(),competenceJPA.getDescriptif()))
                         .collect(Collectors.toSet())
         );}
 

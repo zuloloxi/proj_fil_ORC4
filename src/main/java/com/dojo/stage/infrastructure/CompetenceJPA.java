@@ -15,7 +15,7 @@ public class CompetenceJPA {
     @Column
     private String competence;
     @Column
-    private String decriptif;
+    private String descriptif;
 
     @CreationTimestamp
     private LocalDateTime createDateTime;
@@ -24,11 +24,18 @@ public class CompetenceJPA {
     private LocalDateTime updateDateTime;
 
     public CompetenceJPA() {
-    };
+    }
 
     public CompetenceJPA(Competence competence) {
+        this.id = competence.getId();
         this.competence = competence.getCompetence();
-        this.decriptif = competence.getCompetence();
+        this.descriptif = competence.getCompetence();
+    }
+
+    public CompetenceJPA(Long id, Competence competence) {
+        this.id = id;
+        this.competence = competence.getCompetence();
+        this.descriptif = competence.getCompetence();
     }
 
     public Long getId() {
@@ -39,8 +46,8 @@ public class CompetenceJPA {
         return competence;
     }
 
-    public String getDecriptif() {
-        return decriptif;
+    public String getDescriptif() {
+        return descriptif;
     }
 
     public LocalDateTime getCreateDateTime() {
@@ -49,5 +56,13 @@ public class CompetenceJPA {
 
     public LocalDateTime getUpdateDateTime() {
         return updateDateTime;
+    }
+
+    public Competence toCompetence() {
+        return new Competence(
+                this.id,
+                this.competence,
+                this.descriptif
+        );
     }
 }
