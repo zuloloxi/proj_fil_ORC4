@@ -1,12 +1,17 @@
 package com.dojo.stage.application;
 
+import com.dojo.stage.domain.Competence;
 import com.dojo.stage.domain.Regle;
 import com.dojo.stage.domain.RegleRepository;
+import com.dojo.stage.domain.exception.ErrorCodes;
+import com.dojo.stage.domain.exception.MyProjectException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 @Transactional
@@ -14,6 +19,9 @@ import java.util.List;
 public class RegleService {
     @Autowired
     private RegleRepository regleRepository;
+
+    @Autowired
+    private CompetenceService competenceService;
 
     public List<Regle> getAll() {
         return this.regleRepository.findAll();
@@ -28,6 +36,7 @@ public class RegleService {
     }
 
     public Regle create(Regle regle) {
+        regle.setCompetences(searchCompetences(regle.getCompetences()));
         return this.regleRepository.save(regle);
     }
 
@@ -39,6 +48,20 @@ public class RegleService {
         Regle regle = getById(id);
         regle.update(regleForUpdate);
         return regleRepository.save(regle);
+    }
+
+
+    private Set<Competence> searchCompetences(Set<Competence> competences) {
+        Set<Competence> result = new HashSet<>();
+        for (Competence competence: competences) {
+            Competence competenceToVerify = competenceService.getById(competence.getId());
+            if (competenceToVerify.getCompetence().equals(competence.getCompetence())){
+                result.add(competenceToVerify);
+            }else{
+                throw new MyProjectException(ErrorCodes.COMPETENCE_HAS_CHANGED);
+            }
+        }
+        return result;
     }
 
 }

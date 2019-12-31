@@ -10,12 +10,13 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 public class RegleController {
 
     @Autowired
     private RegleService regleService;
 
-    @RequestMapping(method = RequestMethod.GET, path = {"/regles/"})
+    @RequestMapping(method = RequestMethod.GET, path = {"/regles"})
     public List<Regle> getAll() {
         return this.regleService.getAll(); }
 

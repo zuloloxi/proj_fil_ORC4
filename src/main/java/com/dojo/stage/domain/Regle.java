@@ -81,6 +81,10 @@ public class Regle {
         return competences;
     }
 
+    public void setCompetences(Set<Competence> competences) {
+        this.competences = competences;
+    }
+
     String buildCompetences(){
         return this.getCompetences().isEmpty() ? "ERREUR 007 : NO SKILLS MATCHES":this.getCompetences()
                 .stream()

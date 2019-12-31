@@ -29,13 +29,13 @@ public class CompetenceJPA {
     public CompetenceJPA(Competence competence) {
         this.id = competence.getId();
         this.competence = competence.getCompetence();
-        this.descriptif = competence.getCompetence();
+        this.descriptif = competence.getDescriptif();
     }
 
     public CompetenceJPA(Long id, Competence competence) {
         this.id = id;
         this.competence = competence.getCompetence();
-        this.descriptif = competence.getCompetence();
+        this.descriptif = competence.getDescriptif();
     }
 
     public Long getId() {
