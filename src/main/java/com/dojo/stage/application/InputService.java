@@ -29,6 +29,10 @@ public class InputService {
         return this.inputRepository.findOne(id);
     }
 
+    public Collaborateur getUid (String uid) {
+        return this.inputRepository.findByUid(uid);
+    }
+
     public Long createInputs(Collaborateur newCollaborateur) {
         return this.inputRepository.save(newCollaborateur);
     }

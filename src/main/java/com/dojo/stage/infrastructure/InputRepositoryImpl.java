@@ -24,7 +24,16 @@ public class InputRepositoryImpl implements InputRepository {
 
     @Override
     public Collaborateur findOne(Long id) {
-        return collaborateurDAO.findById(id).map(CollaborateurJPA::toCollaborateur).orElseThrow(() -> new MyProjectException(ErrorCodes.OUTPUT_NOT_FOUND));
+        return collaborateurDAO.findById(id).map(CollaborateurJPA::toCollaborateur).orElseThrow(() -> new MyProjectException(ErrorCodes.INPUT_NOT_FOUND));
+    }
+
+    @Override
+    public Collaborateur findByUid(String uid) {
+        if (collaborateurDAO.findByUid(uid) == null) {
+            throw new MyProjectException(ErrorCodes.INPUT_NOT_FOUND);
+        } else {
+            return collaborateurDAO.findByUid(uid).toCollaborateur();
+        }
     }
 
     @Override

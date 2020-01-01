@@ -6,6 +6,7 @@ public interface InputRepository {
 
     List<Collaborateur> findAll();
     Collaborateur findOne(Long id);
+    Collaborateur findByUid(String uid);
     Long save (Collaborateur collaborateur);
     Long update(Long id, Collaborateur collaborateur);
     void delete(Long id);

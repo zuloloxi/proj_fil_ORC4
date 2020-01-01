@@ -3,6 +3,7 @@ package com.dojo.stage.exposition;
 
 import com.dojo.stage.application.InputService;
 import com.dojo.stage.domain.Output;
+import com.sun.org.apache.regexp.internal.RE;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +25,11 @@ public class InputController {
     @RequestMapping(method = RequestMethod.GET, path = {"/inputs/{id}"})
     public CollaborateurDTO findOne(@PathVariable("id") Long id) {
         return CollaborateurMapper.mapToCollaborateurDTO(this.inputService.getOneInput(id));
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = {"/inputs/uid/{uid}"})
+    public  CollaborateurDTO findUid(@PathVariable("uid") String uid){
+        return CollaborateurMapper.mapToCollaborateurDTO(this.inputService.getUid(uid));
     }
 
     @RequestMapping(method = RequestMethod.POST, path = {"/inputs"})
