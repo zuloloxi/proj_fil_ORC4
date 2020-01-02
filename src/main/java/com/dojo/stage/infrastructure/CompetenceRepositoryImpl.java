@@ -23,14 +23,8 @@ public class CompetenceRepositoryImpl implements CompetenceRepository {
     }
 
     @Override
-    public Competence findByCompetence(String competenceCode) {
-
-        if (competenceDAO.findByCompetence(competenceCode).size() != 0) {
-            return competenceDAO.findByCompetence(competenceCode).get(0)
-                    .toCompetence();
-        } else {
-            throw new MyProjectException(ErrorCodes.REGLE_NOT_FOUND);
-        }
+    public List<Competence> findByCompetence(String competenceCode) {
+        return competenceDAO.findByCompetence(competenceCode).stream().map(CompetenceJPA::toCompetence).collect(Collectors.toList());
     }
 
     @Override

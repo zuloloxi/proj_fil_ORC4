@@ -57,5 +57,10 @@ public class RegleRepositoryImpl implements RegleRepository {
         return regleDAO.findById(id).orElseThrow(()-> new MyProjectException(ErrorCodes.REGLE_NOT_FOUND)).toRegle();
     }
 
+    @Override
+    public List<Regle> findByCompetenceId(Long id) {
+        return regleDAO.findByCompetencesId(id).stream().map(RegleJPA::toRegle).collect(Collectors.toList());
+    }
+
 
 }

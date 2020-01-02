@@ -9,4 +9,5 @@ public interface RegleRepository {
     void delete(Long id);
     Regle save(Regle regle);
     Regle findById (Long id);
+    List<Regle> findByCompetenceId(Long id);
 }
