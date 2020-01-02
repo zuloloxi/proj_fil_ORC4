@@ -49,6 +49,12 @@ public class InputController {
         this.inputService.deleteInputs(id);
     }
 
+    @RequestMapping(method = RequestMethod.DELETE, path = {"/inputs/deleteuid/{uid}"})
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteByUid(@PathVariable("uid") String uid) {
+        this.inputService.deleteByUid(uid);
+    }
+
     @RequestMapping(method = RequestMethod.DELETE, path = {"/inputs"})
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteAll() {
