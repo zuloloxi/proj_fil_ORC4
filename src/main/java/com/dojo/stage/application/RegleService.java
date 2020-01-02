@@ -31,6 +31,10 @@ public class RegleService {
         return this.regleRepository.findByPosteType(posteType);
     }
 
+    public List<Regle> getRegleByCompetenceId (Long competenceId) {
+        return this.regleRepository.findByCompetenceId(competenceId);
+    }
+
     public Regle getById(Long id) {
         return this.regleRepository.findById(id);
     }

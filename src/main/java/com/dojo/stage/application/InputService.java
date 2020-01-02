@@ -45,6 +45,10 @@ public class InputService {
         this.inputRepository.delete(id);
     }
 
+    public void deleteByUid (String uid) {
+        this.inputRepository.deleteByUid(uid);
+    }
+
     public void deleteAllInputs () {
         this.inputRepository.deleteAll();
     }

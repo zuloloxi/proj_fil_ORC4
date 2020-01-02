@@ -176,4 +176,31 @@ public class Collaborateur {
                 regle.buildCompetences()
         );
     }
+
+    @Override
+    public String toString() {
+        return "Collaborateur{" +
+                "uid='" + uid + '\'' +
+                ", civilite='" + civilite + '\'' +
+                ", nom='" + nom + '\'' +
+                ", prenom='" + prenom + '\'' +
+                ", fonction='" + fonction + '\'' +
+                ", telephone='" + telephone + '\'' +
+                ", mail='" + mail + '\'' +
+                ", etage='" + etage + '\'' +
+                ", uoAffectation='" + uoAffectation + '\'' +
+                ", codeImmeubleEmplacementCollaborateur='" + codeImmeubleEmplacementCollaborateur + '\'' +
+                ", region='" + region + '\'' +
+                ", codeRegion='" + codeRegion + '\'' +
+                ", niveauTerritoire='" + niveauTerritoire + '\'' +
+                ", codeTerritoire='" + codeTerritoire + '\'' +
+                ", niveauEntite='" + niveauEntite + '\'' +
+                ", codeEntite='" + codeEntite + '\'' +
+                ", niveauAgence='" + niveauAgence + '\'' +
+                ", codeAgence='" + codeAgence + '\'' +
+                ", localisationCollaborateur='" + localisationCollaborateur + '\'' +
+                ", pj='" + pj + '\'' +
+                ", aMigrer='" + aMigrer + '\'' +
+                '}';
+    }
 }

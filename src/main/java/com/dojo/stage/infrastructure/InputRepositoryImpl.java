@@ -54,6 +54,11 @@ public class InputRepositoryImpl implements InputRepository {
     }
 
     @Override
+    public void deleteByUid(String uid) {
+        collaborateurDAO.deleteByUid(uid);
+    }
+
+    @Override
     public void deleteAll() {
         collaborateurDAO.deleteAll();
     }

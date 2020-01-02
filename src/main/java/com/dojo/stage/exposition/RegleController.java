@@ -29,6 +29,10 @@ public class RegleController {
     public Regle getByPosteType(@PathVariable("posteType") String posteType  ) {
         return this.regleService.getRegleByPosteType(posteType);
     }
+    @RequestMapping(method = RequestMethod.GET, path = {"/regles/competenceId/{competenceId}"})
+    public List<Regle> getByPosteType(@PathVariable("competenceId") Long competenceId  ) {
+        return this.regleService.getRegleByCompetenceId(competenceId);
+    }
 
     @RequestMapping(method = RequestMethod.POST, path = {"/regles"})
     @ResponseStatus(HttpStatus.CREATED)
