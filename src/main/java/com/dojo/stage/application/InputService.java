@@ -41,6 +41,10 @@ public class InputService {
         this.inputRepository.update(id,collaborateur);
     }
 
+    public void updateByUid(String uid, Collaborateur collaborateur) {
+        this.inputRepository.updateByUid(uid, collaborateur);
+    }
+
     public void deleteInputs (Long id) {
         this.inputRepository.delete(id);
     }

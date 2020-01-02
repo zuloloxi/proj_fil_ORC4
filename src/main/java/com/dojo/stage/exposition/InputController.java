@@ -42,6 +42,11 @@ public class InputController {
         this.inputService.updateInput(id, CollaborateurMapper.mapToCollaborateur(collaborateurDTO));
     }
 
+    @RequestMapping(method = RequestMethod.PUT, path = {"/inputs/updateuid/{uid}"})
+    public void updateByUid(@PathVariable("uid") String uid, @RequestBody CollaborateurDTO collaborateurDTO) {
+        this.inputService.updateByUid(uid, CollaborateurMapper.mapToCollaborateur(collaborateurDTO));
+    }
+
     @RequestMapping(method = RequestMethod.DELETE, path = {"/inputs/{id}"})
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable("id") Long id) {

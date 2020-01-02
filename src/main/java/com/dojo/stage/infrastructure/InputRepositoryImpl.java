@@ -49,6 +49,22 @@ public class InputRepositoryImpl implements InputRepository {
     }
 
     @Override
+    public  void updateByUid(String uid, Collaborateur collaborateur) {
+        if (collaborateurDAO.findByUid(uid) == null) {
+            throw new MyProjectException(ErrorCodes.INPUT_NOT_FOUND);
+        } else {
+            collaborateurDAO.updateByUid(uid, collaborateur.getCivilite(), collaborateur.getNom(),
+                    collaborateur.getPrenom(), collaborateur.getFonction(), collaborateur.getTelephone(),
+                    collaborateur.getMail(), collaborateur.getEtage(), collaborateur.getUoAffectation(),
+                    collaborateur.getCodeImmeubleEmplacementCollaborateur(), collaborateur.getRegion(),
+                    collaborateur.getCodeRegion(), collaborateur.getNiveauTerritoire(), collaborateur.getCodeTerritoire(),
+                    collaborateur.getNiveauEntite(), collaborateur.getCodeEntite(), collaborateur.getNiveauAgence(),
+                    collaborateur.getCodeAgence(), collaborateur.getLocalisationCollaborateur(),
+                    collaborateur.getPj(), collaborateur.getaMigrer());
+        }
+    }
+
+    @Override
     public void delete(Long id) {
         collaborateurDAO.deleteById(id);
     }
