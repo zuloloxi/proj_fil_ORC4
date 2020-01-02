@@ -184,4 +184,5 @@ INSERT   INTO "regle" (id , deploiement,  metier,  poste_type , domaine, strates
     (72,'D7',NULL,'RESPONSABLE DES PARTICULIERS','ResRetail',NULL,'Auditeur','ResReg[nom région]','"Niveau Région"'),
     (73,'D7',NULL,'RESPONSABLE PRO-TPE NIVEAU REGION','ResRetail',NULL,'Auditeur','ResReg[nom région]','"Niveau Région"'),
     (74,'D7',NULL,'RESPONSABLE PRO-TPE NIVEAU TERRITOIRE','ResRetail',NULL,'Auditeur','ResTer[nom Territoire]','"Niveau Territoire"'),
-    (75,'D7',NULL,'RESPONSABLE SUPPORT','ResRetail',NULL,'Auditeur','ResTer[nom Territoire]','"Niveau Territoire"');
+    (75,'D7',NULL,'RESPONSABLE SUPPORT','ResRetail',NULL,'Auditeur','ResTer[nom Territoire]','"Niveau Territoire"'),
+    (76,'D7',NULL,'Not found','ERREUR 001 : Pas de correspondance avec le poste type',NULL,NULL,NULL,NULL);

@@ -65,9 +65,7 @@ public class Regle {
         return stratesEquipes == null ? "":stratesEquipes;
     }
 
-    public String getProfil() {
-        return profil;
-    }
+    public String getProfil() { return profil == null ? "":profil; }
 
     public String getEquipesSupervisees() {
         return equipesSupervisees;
@@ -95,6 +93,9 @@ public class Regle {
     String buildProfil(String getNiveauEntite){
         if (getNiveauEntite.isEmpty()) {
             return "ERREUR 003 : NIVEAU ENTITE NON RENSEIGNE";
+        }
+        if (getProfil().isEmpty()) {
+            return "ERREUR 002 : PROFIL NON RENSEIGNE";
         }
         List<String> liste = Arrays.asList(this.getProfil().split("(\\(X\\))"));
         return  liste.size() > 1 ? liste.get(0) + "(" + getNiveauEntite + ")" : getProfil() ;

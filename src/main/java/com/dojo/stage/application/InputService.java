@@ -1,14 +1,12 @@
 package com.dojo.stage.application;
 
-import com.dojo.stage.domain.Collaborateur;
-import com.dojo.stage.domain.InputRepository;
-import com.dojo.stage.domain.Output;
-import com.dojo.stage.domain.RegleRepository;
+import com.dojo.stage.domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 
@@ -59,7 +57,7 @@ public class InputService {
     public List<Output> toOutputs () {
         List<Collaborateur> CollaborateursToTransform = inputRepository.findAll();
         return CollaborateursToTransform.stream().map(collaborateur -> collaborateur.toOutput(regleRepository.findByPosteTypeSTP(collaborateur.getFonction())))
-//                .limit((25))
-                .collect(Collectors.toList());
+//        .limit((8))
+        .collect(Collectors.toList());
     }
 }

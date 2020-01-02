@@ -3,7 +3,6 @@ package com.dojo.stage.exposition;
 
 import com.dojo.stage.application.InputService;
 import com.dojo.stage.domain.Output;
-import com.sun.org.apache.regexp.internal.RE;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

@@ -50,7 +50,6 @@ INSERT INTO "regle_has_competences" (regle_id, competence_id) VALUES
 (49,5),
 (50,5),
 (51,5),
-
 (53,3),
 (54,4),
 (55,10),
