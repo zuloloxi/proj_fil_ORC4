@@ -3,14 +3,14 @@ package com.dojo.stage.domain.exception;
 import java.util.HashSet;
 import java.util.Set;
 
-public class MyProjectException extends RuntimeException {
+public class MyProjectException404 extends RuntimeException {
     private Set<String> codeErreurs = new HashSet<>();
 
-    public MyProjectException(String codeErreur) {
+    public MyProjectException404(String codeErreur) {
         this.codeErreurs.add(codeErreur);
     }
 
-    public MyProjectException(Set<String> codeErreurs) {
+    public MyProjectException404(Set<String> codeErreurs) {
         this.codeErreurs = codeErreurs;
     }
 
@@ -18,3 +18,4 @@ public class MyProjectException extends RuntimeException {
         return codeErreurs;
     }
 }
+

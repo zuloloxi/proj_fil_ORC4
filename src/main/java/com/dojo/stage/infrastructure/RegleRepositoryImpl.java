@@ -3,7 +3,7 @@ package com.dojo.stage.infrastructure;
 import com.dojo.stage.domain.Regle;
 import com.dojo.stage.domain.RegleRepository;
 import com.dojo.stage.domain.exception.ErrorCodes;
-import com.dojo.stage.domain.exception.MyProjectException;
+import com.dojo.stage.domain.exception.MyProjectException500;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -27,7 +27,7 @@ public class RegleRepositoryImpl implements RegleRepository {
             return regleDAO.findByPosteType(posteType).get(0)
                     .toRegle();
         } else {
-            throw new MyProjectException(ErrorCodes.REGLE_NOT_FOUND);
+            throw new MyProjectException500(ErrorCodes.REGLE_NOT_FOUND);
         }
     }
 
@@ -54,7 +54,7 @@ public class RegleRepositoryImpl implements RegleRepository {
 
     @Override
     public Regle findById(Long id) {
-        return regleDAO.findById(id).orElseThrow(()-> new MyProjectException(ErrorCodes.REGLE_NOT_FOUND)).toRegle();
+        return regleDAO.findById(id).orElseThrow(()-> new MyProjectException500(ErrorCodes.REGLE_NOT_FOUND)).toRegle();
     }
 
     @Override

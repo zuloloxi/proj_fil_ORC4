@@ -3,7 +3,7 @@ package com.dojo.stage.infrastructure;
 import com.dojo.stage.domain.Output;
 import com.dojo.stage.domain.OutputRepository;
 import com.dojo.stage.domain.exception.ErrorCodes;
-import com.dojo.stage.domain.exception.MyProjectException;
+import com.dojo.stage.domain.exception.MyProjectException500;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -34,7 +34,7 @@ public class OutputRepositoryImpl implements OutputRepository {
 
     @Override
     public Output get(Long id) {
-        return outputFileDAO.findById(id).map(OutputFileJPA::toOutputFile).orElseThrow(() -> new MyProjectException(ErrorCodes.OUTPUT_NOT_FOUND));
+        return outputFileDAO.findById(id).map(OutputFileJPA::toOutputFile).orElseThrow(() -> new MyProjectException500(ErrorCodes.OUTPUT_NOT_FOUND));
     }
 
     @Override

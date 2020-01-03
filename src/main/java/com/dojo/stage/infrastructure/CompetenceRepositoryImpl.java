@@ -2,9 +2,9 @@ package com.dojo.stage.infrastructure;
 
 import com.dojo.stage.domain.Competence;
 import com.dojo.stage.domain.CompetenceRepository;
-import com.dojo.stage.domain.Regle;
 import com.dojo.stage.domain.exception.ErrorCodes;
-import com.dojo.stage.domain.exception.MyProjectException;
+import com.dojo.stage.domain.exception.MyProjectException404;
+import com.dojo.stage.domain.exception.MyProjectException500;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -39,6 +39,6 @@ public class CompetenceRepositoryImpl implements CompetenceRepository {
 
     @Override
     public Competence findById(Long id) {
-        return competenceDAO.findById(id).orElseThrow(()-> new MyProjectException(ErrorCodes.COMPETENCE_NOT_FOUND)).toCompetence();
+        return competenceDAO.findById(id).orElseThrow(()-> new MyProjectException404(ErrorCodes.COMPETENCE_NOT_FOUND)).toCompetence();
     }
 }

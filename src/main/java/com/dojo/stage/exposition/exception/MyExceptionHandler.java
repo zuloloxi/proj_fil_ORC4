@@ -1,6 +1,8 @@
 package com.dojo.stage.exposition.exception;
 
-import com.dojo.stage.domain.exception.MyProjectException;
+import com.dojo.stage.domain.exception.MyProjectException400;
+import com.dojo.stage.domain.exception.MyProjectException404;
+import com.dojo.stage.domain.exception.MyProjectException500;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -32,8 +34,28 @@ public class MyExceptionHandler {
 
     @ResponseBody
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    @ExceptionHandler(value = MyProjectException.class)
-    public Set<String> handleBusinessException(MyProjectException exceptions) {
+    @ExceptionHandler(value = MyProjectException500.class)
+    public Set<String> handleBusinessException(MyProjectException500 exceptions) {
+        Set<String> exceptionsErrors = exceptions.getCodeErreurs();
+
+        LOGGER.debug(exceptionsErrors.toString());
+        return new TreeSet<>(exceptionsErrors);
+    }
+
+    @ResponseBody
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ExceptionHandler(value = MyProjectException404.class)
+    public Set<String> handleBusinessException(MyProjectException404 exceptions) {
+        Set<String> exceptionsErrors = exceptions.getCodeErreurs();
+
+        LOGGER.debug(exceptionsErrors.toString());
+        return new TreeSet<>(exceptionsErrors);
+    }
+
+    @ResponseBody
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(value = MyProjectException400.class)
+    public Set<String> handleBusinessException(MyProjectException400 exceptions) {
         Set<String> exceptionsErrors = exceptions.getCodeErreurs();
 
         LOGGER.debug(exceptionsErrors.toString());

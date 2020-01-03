@@ -4,7 +4,7 @@ import com.dojo.stage.domain.Competence;
 import com.dojo.stage.domain.Regle;
 import com.dojo.stage.domain.RegleRepository;
 import com.dojo.stage.domain.exception.ErrorCodes;
-import com.dojo.stage.domain.exception.MyProjectException;
+import com.dojo.stage.domain.exception.MyProjectException500;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -62,7 +62,7 @@ public class RegleService {
             if (competenceToVerify.getCompetence().equals(competence.getCompetence())){
                 result.add(competenceToVerify);
             }else{
-                throw new MyProjectException(ErrorCodes.COMPETENCE_HAS_CHANGED);
+                throw new MyProjectException500(ErrorCodes.COMPETENCE_HAS_CHANGED);
             }
         }
         return result;

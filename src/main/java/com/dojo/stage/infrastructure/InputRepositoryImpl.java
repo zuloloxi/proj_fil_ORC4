@@ -3,7 +3,7 @@ package com.dojo.stage.infrastructure;
 import com.dojo.stage.domain.Collaborateur;
 import com.dojo.stage.domain.InputRepository;
 import com.dojo.stage.domain.exception.ErrorCodes;
-import com.dojo.stage.domain.exception.MyProjectException;
+import com.dojo.stage.domain.exception.MyProjectException500;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -24,13 +24,13 @@ public class InputRepositoryImpl implements InputRepository {
 
     @Override
     public Collaborateur findOne(Long id) {
-        return collaborateurDAO.findById(id).map(CollaborateurJPA::toCollaborateur).orElseThrow(() -> new MyProjectException(ErrorCodes.INPUT_NOT_FOUND));
+        return collaborateurDAO.findById(id).map(CollaborateurJPA::toCollaborateur).orElseThrow(() -> new MyProjectException500(ErrorCodes.INPUT_NOT_FOUND));
     }
 
     @Override
     public Collaborateur findByUid(String uid) {
         if (collaborateurDAO.findByUid(uid) == null) {
-            throw new MyProjectException(ErrorCodes.INPUT_NOT_FOUND);
+            throw new MyProjectException500(ErrorCodes.INPUT_NOT_FOUND);
         } else {
             return collaborateurDAO.findByUid(uid).toCollaborateur();
         }
@@ -51,7 +51,7 @@ public class InputRepositoryImpl implements InputRepository {
     @Override
     public  void updateByUid(String uid, Collaborateur collaborateur) {
         if (collaborateurDAO.findByUid(uid) == null) {
-            throw new MyProjectException(ErrorCodes.INPUT_NOT_FOUND);
+            throw new MyProjectException500(ErrorCodes.INPUT_NOT_FOUND);
         } else {
             collaborateurDAO.updateByUid(uid, collaborateur.getCivilite(), collaborateur.getNom(),
                     collaborateur.getPrenom(), collaborateur.getFonction(), collaborateur.getTelephone(),
