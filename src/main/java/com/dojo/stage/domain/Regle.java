@@ -1,6 +1,10 @@
 package com.dojo.stage.domain;
 
 
+import com.dojo.stage.domain.exception.ErrorCodes;
+import com.dojo.stage.domain.exception.MyProjectException500;
+import org.springframework.util.StringUtils;
+
 import javax.validation.constraints.Null;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -27,7 +31,7 @@ public class Regle {
 
     private Set<Competence> competences;
 
-
+    public Regle(){};
     public Regle(Long id, String deploiement, String metier, String posteType, String domaine, String stratesEquipes, String profil, String equipesSupervisees, String descriptifEquipesSupervisses, Set<Competence> competences) {
         this.id = id;
         this.deploiement = deploiement;
@@ -39,6 +43,8 @@ public class Regle {
         this.equipesSupervisees = equipesSupervisees;
         this.descriptifEquipesSupervisses = descriptifEquipesSupervisses;
         this.competences = competences;
+        validate();
+
     }
 
     public Long getId() {
@@ -81,6 +87,22 @@ public class Regle {
 
     public void setCompetences(Set<Competence> competences) {
         this.competences = competences;
+    }
+
+    private void validate() {
+        Set<String> errors = new HashSet<>();
+        if (StringUtils.isEmpty(this.domaine)) {
+           errors.add(ErrorCodes.DOMAINE_IS_EMPTY);
+            System.out.println( errors);
+        }
+        if (StringUtils.isEmpty(this.posteType)) {
+            errors.add(ErrorCodes.POSTE_TYPE_IS_EMPTY);
+            System.out.println( errors);
+        }
+
+        if(!errors.isEmpty()) {
+            throw new MyProjectException500(errors);
+        }
     }
 
     String buildCompetences(){
