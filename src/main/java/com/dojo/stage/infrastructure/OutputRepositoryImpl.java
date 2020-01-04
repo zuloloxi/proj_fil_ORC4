@@ -17,7 +17,7 @@ public class OutputRepositoryImpl implements OutputRepository {
 
     @Override
     public List<Output> findAll() {
-        return outputFileDAO.findAll().stream().map(OutputFileJPA::toOutputFile).collect(Collectors.toList());
+        return outputFileDAO.findAll().stream().map(OutputFileJPA::toOutput).collect(Collectors.toList());
     }
 
     @Override
