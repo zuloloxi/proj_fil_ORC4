@@ -4,8 +4,10 @@ import com.dojo.stage.domain.Competence;
 import com.dojo.stage.domain.Regle;
 import com.dojo.stage.domain.RegleRepository;
 import com.dojo.stage.domain.exception.ErrorCodes;
+import com.dojo.stage.domain.exception.MyProjectException404;
 import com.dojo.stage.domain.exception.MyProjectException500;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -45,7 +47,12 @@ public class RegleService {
     }
 
     public void delete (Long id) {
-        regleRepository.delete(id);
+        try {
+            regleRepository.delete(id);
+        }
+        catch(EmptyResultDataAccessException e){
+            throw new MyProjectException404(ErrorCodes.REGLE_NOT_FOUND);
+        }
     }
 
     public Regle update(Regle regleForUpdate, Long id) {
