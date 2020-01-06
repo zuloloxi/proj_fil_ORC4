@@ -8,6 +8,7 @@ public final class ErrorCodes {
     public static final String REGLE_NOT_FOUND = NOT_FOUND + ".2";
     public static final String COMPETENCE_NOT_FOUND = NOT_FOUND + ".3";
     public static final String INPUT_NOT_FOUND = NOT_FOUND + ".4";
+    public static final String SAISIE_NOT_FOUND = NOT_FOUND + ".4";
     public static final String COMPETENCE = "ERR_0002";
     public static final String COMPETENCE_HAS_CHANGED = COMPETENCE + ".1";
     public static final String COMPETENCE_IS_STILL_USED = COMPETENCE + ".2";
