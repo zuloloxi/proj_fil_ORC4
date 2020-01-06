@@ -24,7 +24,7 @@ public class CompetenceRepositoryImpl implements CompetenceRepository {
 
     @Override
     public List<Competence> findByCompetence(String competenceCode) {
-        return competenceDAO.findByCompetence(competenceCode).stream().map(CompetenceJPA::toCompetence).collect(Collectors.toList());
+        return competenceDAO.findByCompetenceOrderById(competenceCode).stream().map(CompetenceJPA::toCompetence).collect(Collectors.toList());
     }
 
     @Override
