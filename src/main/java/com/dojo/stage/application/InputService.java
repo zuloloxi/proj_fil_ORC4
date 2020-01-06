@@ -62,6 +62,11 @@ public class InputService {
         return collaborateurToTransform.toOutput(regleRepository.findByPosteType(collaborateurToTransform.getFonction()));
     }
 
+    public Output toOutputByUid (String uid) {
+        Collaborateur collaborateurToTransform = inputRepository.findByUid(uid);
+        return collaborateurToTransform.toOutput(regleRepository.findByPosteType(collaborateurToTransform.getFonction()));
+    }
+
     public List<Output> toOutputs () {
         List<Collaborateur> CollaborateursToTransform = inputRepository.findAll();
         return CollaborateursToTransform.stream().map(collaborateur -> collaborateur.toOutput(regleRepository.findByPosteTypeSTP(collaborateur.getFonction())))

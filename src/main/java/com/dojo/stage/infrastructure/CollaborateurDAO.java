@@ -1,11 +1,13 @@
 package com.dojo.stage.infrastructure;
 
-import com.dojo.stage.domain.Collaborateur;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import java.util.List;
 
 public interface CollaborateurDAO extends JpaRepository<CollaborateurJPA, Long> {
+
+    List<CollaborateurJPA> findByOrderByIdAsc();
 
     @Query(value = "SELECT * FROM collaborateur WHERE uid = :uid", nativeQuery = true)
     CollaborateurJPA findByUid(String uid);
