@@ -7,5 +7,5 @@ public interface SaisieTransformationRepository {
     void delete(Long id);
     SaisieTransformation save(SaisieTransformation saisieTransformation);
     SaisieTransformation findById (Long id);
-    List<SaisieTransformation> findByCollaborateurId (Long id);
+    List<SaisieTransformation> findByCollaborateurUid (String uid);
 }

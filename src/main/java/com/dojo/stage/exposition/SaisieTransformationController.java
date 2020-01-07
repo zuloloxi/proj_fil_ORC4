@@ -16,7 +16,7 @@ public class SaisieTransformationController {
     @Autowired
     private SaisieTransformationService saisieTransformationService;
 
-    @RequestMapping(method = RequestMethod.GET, path = {"/saisies/"})
+    @RequestMapping(method = RequestMethod.GET, path = {"/saisies"})
     public List<SaisieTransformation> getAll() {
         return this.saisieTransformationService.getAll();
     }

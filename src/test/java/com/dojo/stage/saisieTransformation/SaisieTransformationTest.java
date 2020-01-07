@@ -19,10 +19,11 @@ public class SaisieTransformationTest {
 
     @Test
     void test_all_getter() {
-        SaisieTransformation saisieTransformation = new SaisieTransformation(1L, "domaine", "equipe", "profil", "competences");
+        SaisieTransformation saisieTransformation = new SaisieTransformation(0L,"785858", "domaine", "equipe", "profil", "competences");
 
         assertAll(
-                ()->assertEquals(1L,saisieTransformation.getCollaborateurId()),
+                ()->assertEquals(0L,saisieTransformation.getId()),
+                ()->assertEquals("785858",saisieTransformation.getCollaborateurUid()),
                 ()->assertEquals("domaine",saisieTransformation.getDomaine()),
                 ()->assertEquals("equipe",saisieTransformation.getEquipe()),
                 ()->assertEquals("profil",saisieTransformation.getProfil()),

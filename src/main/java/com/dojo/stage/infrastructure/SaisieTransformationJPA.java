@@ -17,7 +17,7 @@ public class SaisieTransformationJPA {
     @GeneratedValue
     private Long id;
     @Column
-    private Long collaborateurId;
+    private String collaborateurUid;
     @Column
     private String domaine;
     @Column
@@ -35,7 +35,8 @@ public class SaisieTransformationJPA {
     }
 
     public SaisieTransformationJPA(SaisieTransformation saisie) {
-        this.collaborateurId = saisie.getCollaborateurId();
+        this.id = saisie.getId();
+        this.collaborateurUid = saisie.getCollaborateurUid();
         this.domaine = saisie.getDomaine();
         this.equipe = saisie.getEquipe();
         this.profil = saisie.getProfil();
@@ -44,7 +45,8 @@ public class SaisieTransformationJPA {
 
     public SaisieTransformation toSaisieTransformation() {
         return new SaisieTransformation(
-                this.collaborateurId,
+                this.id,
+                this.collaborateurUid,
                 this.domaine,
                 this.equipe,
                 this.profil,

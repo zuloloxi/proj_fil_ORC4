@@ -25,7 +25,7 @@ public class SaisieTransformationService {
     }
 
     public SaisieTransformation create(SaisieTransformation saisieTransformation) {
-        if (saisieTransformationRepository.findByCollaborateurId(saisieTransformation.getCollaborateurId()).isEmpty()) {
+        if (saisieTransformationRepository.findByCollaborateurUid(saisieTransformation.getCollaborateurUid()).isEmpty()) {
             return this.saisieTransformationRepository.save(saisieTransformation);
         } else {
             throw new MyProjectException400(ErrorCodes.COMPETENCE_ALREADY_EXISTS);
@@ -39,7 +39,7 @@ public class SaisieTransformationService {
 
     public SaisieTransformation update(SaisieTransformation saisieTransformationForUpdate, Long id) {
         SaisieTransformation saisieTransformation = getById(id);
-        saisieTransformation.update(saisieTransformationForUpdate);
+        saisieTransformation.update(saisieTransformationForUpdate, id);
         return saisieTransformationRepository.save(saisieTransformation);
     }
 

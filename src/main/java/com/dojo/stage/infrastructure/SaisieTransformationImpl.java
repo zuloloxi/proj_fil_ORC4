@@ -38,7 +38,7 @@ public class SaisieTransformationImpl implements SaisieTransformationRepository 
     }
 
     @Override
-    public List<SaisieTransformation> findByCollaborateurId(Long id) {
-        return saisieTransformationDAO.findByCollaborateurId(id).stream().map(SaisieTransformationJPA::toSaisieTransformation).collect(Collectors.toList());
+    public List<SaisieTransformation> findByCollaborateurUid(String uid) {
+        return saisieTransformationDAO.findByCollaborateurUid(uid).stream().map(SaisieTransformationJPA::toSaisieTransformation).collect(Collectors.toList());
     }
 }
