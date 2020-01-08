@@ -17,8 +17,11 @@ public class OutputController {
     private OutputService outputService;
 
     @RequestMapping(method = RequestMethod.GET, path = {"/outputs"})
-    public List<Output> listAllOutputs() {
-        return this.outputService.listAll();
+    public List<Output> listAllOutputs() { return this.outputService.listAll(); }
+
+    @RequestMapping(method = RequestMethod.GET, path = {"/transformedInputs"})
+    public List<Output> listAllTransformedInputs() {
+        return this.outputService.transform();
     }
 
     @RequestMapping(method = RequestMethod.POST, path = {"/outputs"})

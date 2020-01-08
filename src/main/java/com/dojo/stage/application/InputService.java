@@ -71,6 +71,6 @@ public class InputService {
         List<Collaborateur> CollaborateursToTransform = inputRepository.findAll();
         return CollaborateursToTransform.stream().map(collaborateur -> collaborateur.toOutput(regleRepository.findByPosteTypeSTP(collaborateur.getFonction())))
 //        .limit((8))
-        .collect(Collectors.toList());
+                .collect(Collectors.toList());
     }
 }
