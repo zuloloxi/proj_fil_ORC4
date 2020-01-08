@@ -16,6 +16,7 @@ public final class ErrorCodes {
     public static final String REGLE = "ERR_0003";
     public static final String DOMAINE_IS_EMPTY = REGLE + ".1";
     public static final String POSTE_TYPE_IS_EMPTY= REGLE + ".2";
+    public static final String NOT_DELETABLE = REGLE + ".3";
 
 //    public static final String BOOK_NOT_FOUND = NOT_FOUND + ".2";
 //    public static final String LIBRARY_MUST_HAVE_A_DIRECTOR = "ERR_0002";

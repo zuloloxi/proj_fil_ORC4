@@ -5,6 +5,7 @@ import java.util.List;
 public interface InputRepository {
 
     List<Collaborateur> findAll();
+    List<Collaborateur> findAllOrderByFonctionAsc();
     Collaborateur findOne(Long id);
     Collaborateur findByUid(String uid);
     Long save (Collaborateur collaborateur);

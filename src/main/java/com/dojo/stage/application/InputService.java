@@ -19,6 +19,9 @@ public class InputService {
     @Autowired
     private RegleRepository regleRepository;
 
+    private Regle regleCurrent = new Regle();
+    private String fonctionCurrent = "";
+
     public List<Collaborateur> getAllInputs() {
         return this.inputRepository.findAll();
     }
@@ -68,9 +71,13 @@ public class InputService {
     }
 
     public List<Output> toOutputs () {
-        List<Collaborateur> CollaborateursToTransform = inputRepository.findAll();
-        return CollaborateursToTransform.stream().map(collaborateur -> collaborateur.toOutput(regleRepository.findByPosteTypeSTP(collaborateur.getFonction())))
-//        .limit((8))
+        List<Collaborateur> CollaborateursToTransform = inputRepository.findAllOrderByFonctionAsc();
+        return CollaborateursToTransform.stream().map(collaborateur ->  {
+            if (!collaborateur.getFonction().equals(regleCurrent.getPosteType()) && (!fonctionCurrent.equals(collaborateur.getFonction())) ){
+                fonctionCurrent = collaborateur.getFonction();
+                regleCurrent = regleRepository.findByPosteTypeSTP(collaborateur.getFonction());
+            }
+            return collaborateur.toOutput(regleCurrent);})
         .collect(Collectors.toList());
     }
 }
