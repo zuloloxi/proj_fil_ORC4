@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -18,6 +19,11 @@ public class InputService {
     private InputRepository inputRepository;
     @Autowired
     private RegleRepository regleRepository;
+    @Autowired
+    private SaisieTransformationRepository saisieTransformationRepository;
+
+    private Regle regleCurrent = new Regle();
+    private String fonctionCurrent = "";
 
     public List<Collaborateur> getAllInputs() {
         return this.inputRepository.findAll();
@@ -59,18 +65,38 @@ public class InputService {
 
     public Output toOutput (Long id) {
         Collaborateur collaborateurToTransform = inputRepository.findOne(id);
-        return collaborateurToTransform.toOutput(regleRepository.findByPosteType(collaborateurToTransform.getFonction()));
+        return toOutputByUid(collaborateurToTransform.getUid());
+//        return collaborateurToTransform.toOutput(regleRepository.findByPosteType(collaborateurToTransform.getFonction()));
     }
 
     public Output toOutputByUid (String uid) {
         Collaborateur collaborateurToTransform = inputRepository.findByUid(uid);
-        return collaborateurToTransform.toOutput(regleRepository.findByPosteType(collaborateurToTransform.getFonction()));
+        Optional<Output> outputFromSaisie = toOutputBySaisie(collaborateurToTransform);
+        return outputFromSaisie.orElse(collaborateurToTransform.toOutput(regleRepository.findByPosteType(collaborateurToTransform.getFonction())));
+    }
+
+    private Optional<Output> toOutputBySaisie(Collaborateur collaborateur) {
+        List<SaisieTransformation> saisieTransformation = saisieTransformationRepository.findByCollaborateurUid(collaborateur.getUid());
+        if (saisieTransformation.size() > 0 ) {
+            return Optional.of(collaborateur.toOutput(saisieTransformation.get(0)));
+        } else {
+            return Optional.empty();
+        }
     }
 
     public List<Output> toOutputs () {
-        List<Collaborateur> CollaborateursToTransform = inputRepository.findAll();
-        return CollaborateursToTransform.stream().map(collaborateur -> collaborateur.toOutput(regleRepository.findByPosteTypeSTP(collaborateur.getFonction())))
-//        .limit((8))
+        List<Collaborateur> CollaborateursToTransform = inputRepository.findAllOrderByFonctionAsc();
+        return CollaborateursToTransform
+                .stream()
+                .map(collaborateur -> toOutputBySaisie(collaborateur).orElse(getOutputByRegle(collaborateur)))
                 .collect(Collectors.toList());
+    }
+
+    private Output getOutputByRegle(Collaborateur collaborateur) {
+        if (!collaborateur.getFonction().equals(regleCurrent.getPosteType()) && (!fonctionCurrent.equals(collaborateur.getFonction())) ){
+            fonctionCurrent = collaborateur.getFonction();
+            regleCurrent = regleRepository.findByPosteTypeSTP(collaborateur.getFonction());
+        }
+        return collaborateur.toOutput(regleCurrent);
     }
 }

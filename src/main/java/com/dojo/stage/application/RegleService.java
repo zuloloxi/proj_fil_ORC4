@@ -48,7 +48,12 @@ public class RegleService {
 
     public void delete (Long id) {
         try {
-            regleRepository.delete(id);
+            if (getById(id).getDomaine().startsWith("ERREUR")) {
+                throw new MyProjectException500(ErrorCodes.NOT_DELETABLE );
+            }
+            else {
+                regleRepository.delete(id);
+            }
         }
         catch(EmptyResultDataAccessException e){
             throw new MyProjectException404(ErrorCodes.REGLE_NOT_FOUND);

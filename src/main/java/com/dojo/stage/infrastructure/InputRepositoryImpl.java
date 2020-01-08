@@ -21,6 +21,10 @@ public class InputRepositoryImpl implements InputRepository {
         return collaborateurDAO.findByOrderByIdAsc().stream().map(CollaborateurJPA::toCollaborateur).collect(Collectors.toList());
     }
 
+    @Override
+    public List<Collaborateur> findAllOrderByFonctionAsc() {
+        return collaborateurDAO.findByOrderByCollaborateur_FonctionAsc().stream().map(CollaborateurJPA::toCollaborateur).collect(Collectors.toList());
+    }
 
     @Override
     public Collaborateur findOne(Long id) {
