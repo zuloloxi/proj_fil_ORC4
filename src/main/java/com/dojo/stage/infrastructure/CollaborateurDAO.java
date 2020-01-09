@@ -9,8 +9,7 @@ public interface CollaborateurDAO extends JpaRepository<CollaborateurJPA, Long> 
 
     List<CollaborateurJPA> findByOrderByIdAsc();
 
-    @Query(value = "SELECT * FROM collaborateur  order by fonction" , nativeQuery = true)
-    List<CollaborateurJPA> findByOrderByFonctionAsc();
+    List<CollaborateurJPA> findByOrderByCollaborateur_FonctionAsc();
 
     @Query(value = "SELECT * FROM collaborateur WHERE uid = :uid", nativeQuery = true)
     CollaborateurJPA findByUid(String uid);

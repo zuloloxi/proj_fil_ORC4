@@ -1,17 +1,21 @@
 package com.dojo.stage.application;
 
-import com.dojo.stage.domain.Output;
-import com.dojo.stage.domain.OutputRepository;
+import com.dojo.stage.domain.*;
+import com.dojo.stage.exposition.OutputMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Transactional
 @Service
 public class OutputService {
-
+    @Autowired
+    private InputRepository inputRepository;
+    @Autowired
+    private RegleRepository regleRepository;
     @Autowired
     private OutputRepository outputRepository;
 
@@ -46,5 +50,12 @@ public class OutputService {
         outputRepository.deleteAll();
     }
 
-
+    public List<Output> transform() {
+        outputRepository.deleteAll();
+        create(inputRepository.findAll().stream()
+                .map(collaborateur -> collaborateur.toOutput(regleRepository.findByPosteTypeSTP(collaborateur.getFonction())))
+//                .limit((8))
+                .collect(Collectors.toList()));
+        return listAll();
+    }
 }

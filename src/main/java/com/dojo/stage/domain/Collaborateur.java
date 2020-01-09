@@ -177,6 +177,19 @@ public class Collaborateur {
         );
     }
 
+    public Output toOutput (SaisieTransformation saisieTransformation) {
+        return  new Output(
+            this.uid,
+            this.nom,
+            this.prenom,
+            this.mail,
+            saisieTransformation.getDomaine(),
+            saisieTransformation.getEquipe(),
+            saisieTransformation.getProfil(),
+            saisieTransformation.getCompetences()
+        );
+    }
+
     @Override
     public String toString() {
         return "Collaborateur{" +
