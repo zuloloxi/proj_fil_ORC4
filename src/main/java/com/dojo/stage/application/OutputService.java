@@ -12,12 +12,11 @@ import java.util.stream.Collectors;
 @Transactional
 @Service
 public class OutputService {
-    @Autowired
-    private InputRepository inputRepository;
-    @Autowired
-    private RegleRepository regleRepository;
+
     @Autowired
     private OutputRepository outputRepository;
+    @Autowired
+    private TransformationService transformationService;
 
     public List<Output> listAll() {
         return this.outputRepository.findAll();
@@ -52,10 +51,7 @@ public class OutputService {
 
     public List<Output> transform() {
         outputRepository.deleteAll();
-        create(inputRepository.findAll().stream()
-                .map(collaborateur -> collaborateur.toOutput(regleRepository.findByPosteTypeSTP(collaborateur.getFonction())))
-//                .limit((8))
-                .collect(Collectors.toList()));
+        create(this.transformationService.toOutputs());
         return listAll();
     }
 }

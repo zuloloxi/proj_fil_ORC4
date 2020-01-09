@@ -21,9 +21,8 @@ public class InputService {
     private RegleRepository regleRepository;
     @Autowired
     private SaisieTransformationRepository saisieTransformationRepository;
-
-    private Regle regleCurrent = new Regle();
-    private String fonctionCurrent = "";
+    @Autowired
+    private TransformationService transformationService;
 
     public List<Collaborateur> getAllInputs() {
         return this.inputRepository.findAll();
@@ -65,38 +64,16 @@ public class InputService {
 
     public Output toOutput (Long id) {
         Collaborateur collaborateurToTransform = inputRepository.findOne(id);
-        return toOutputByUid(collaborateurToTransform.getUid());
-//        return collaborateurToTransform.toOutput(regleRepository.findByPosteType(collaborateurToTransform.getFonction()));
+        return this.transformationService.toOutput(collaborateurToTransform);
     }
 
     public Output toOutputByUid (String uid) {
         Collaborateur collaborateurToTransform = inputRepository.findByUid(uid);
-        Optional<Output> outputFromSaisie = toOutputBySaisie(collaborateurToTransform);
-        return outputFromSaisie.orElse(collaborateurToTransform.toOutput(regleRepository.findByPosteType(collaborateurToTransform.getFonction())));
-    }
-
-    private Optional<Output> toOutputBySaisie(Collaborateur collaborateur) {
-        List<SaisieTransformation> saisieTransformation = saisieTransformationRepository.findByCollaborateurUid(collaborateur.getUid());
-        if (saisieTransformation.size() > 0 ) {
-            return Optional.of(collaborateur.toOutput(saisieTransformation.get(0)));
-        } else {
-            return Optional.empty();
-        }
+        return this.transformationService.toOutput(collaborateurToTransform);
     }
 
     public List<Output> toOutputs () {
-        List<Collaborateur> CollaborateursToTransform = inputRepository.findAllOrderByFonctionAsc();
-        return CollaborateursToTransform
-                .stream()
-                .map(collaborateur -> toOutputBySaisie(collaborateur).orElse(getOutputByRegle(collaborateur)))
-                .collect(Collectors.toList());
+        return this.transformationService.toOutputs();
     }
 
-    private Output getOutputByRegle(Collaborateur collaborateur) {
-        if (!collaborateur.getFonction().equals(regleCurrent.getPosteType()) && (!fonctionCurrent.equals(collaborateur.getFonction())) ){
-            fonctionCurrent = collaborateur.getFonction();
-            regleCurrent = regleRepository.findByPosteTypeSTP(collaborateur.getFonction());
-        }
-        return collaborateur.toOutput(regleCurrent);
-    }
 }
