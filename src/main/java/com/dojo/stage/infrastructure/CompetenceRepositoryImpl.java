@@ -19,7 +19,7 @@ public class CompetenceRepositoryImpl implements CompetenceRepository {
 
     @Override
     public List<Competence> findAll() {
-        return competenceDAO.findAll().stream().map(CompetenceJPA::toCompetence).collect(Collectors.toList());
+        return competenceDAO.findAllByOrderById().stream().map(CompetenceJPA::toCompetence).collect(Collectors.toList());
     }
 
     @Override

@@ -19,7 +19,7 @@ public class SaisieTransformationImpl implements SaisieTransformationRepository 
 
     @Override
     public List<SaisieTransformation> findAll() {
-        return saisieTransformationDAO.findAll().stream().map(SaisieTransformationJPA::toSaisieTransformation).collect(Collectors.toList());
+        return saisieTransformationDAO.findAllByOrderById().stream().map(SaisieTransformationJPA::toSaisieTransformation).collect(Collectors.toList());
     }
 
     @Override

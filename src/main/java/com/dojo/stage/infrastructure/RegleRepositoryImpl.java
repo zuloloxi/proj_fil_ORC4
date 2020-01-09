@@ -18,7 +18,7 @@ public class RegleRepositoryImpl implements RegleRepository {
 
     @Override
     public List<Regle> findAll() {
-        return regleDAO.findAll().stream().map(RegleJPA::toRegle).collect(Collectors.toList());
+        return regleDAO.findAllByOrderById().stream().map(RegleJPA::toRegle).collect(Collectors.toList());
     }
 
     @Override
