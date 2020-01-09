@@ -16,6 +16,7 @@ public class OutputFileJPA {
     private Long id;
 
     @Embedded
+    @AttributeOverride(name="competences",  column=@Column(length=3000) )
     private Output output;
 
     @CreationTimestamp
