@@ -70,12 +70,20 @@ public class InputRepositoryImpl implements InputRepository {
 
     @Override
     public void delete(Long id) {
-        collaborateurDAO.deleteById(id);
+        if (!collaborateurDAO.findById(id).isPresent()) {
+            throw new MyProjectException500(ErrorCodes.INPUT_NOT_FOUND);
+        } else {
+            collaborateurDAO.deleteById(id);
+        }
     }
 
     @Override
     public void deleteByUid(String uid) {
-        collaborateurDAO.deleteByUid(uid);
+        if (collaborateurDAO.findByUid(uid) == null) {
+            throw new MyProjectException500(ErrorCodes.INPUT_NOT_FOUND);
+        } else {
+            collaborateurDAO.deleteByUid(uid);
+        }
     }
 
     @Override

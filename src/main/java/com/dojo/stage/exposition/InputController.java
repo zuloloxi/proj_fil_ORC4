@@ -48,7 +48,7 @@ public class InputController {
     }
 
     @RequestMapping(method = RequestMethod.DELETE, path = {"/inputs/{id}"})
-    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @ResponseStatus(HttpStatus.ACCEPTED)
     public void delete(@PathVariable("id") Long id) {
         this.inputService.deleteInputs(id);
     }

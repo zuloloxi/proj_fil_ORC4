@@ -49,7 +49,7 @@ public class RegleService {
     public void delete (Long id) {
         try {
             if (getById(id).getDomaine().startsWith("ERREUR")) {
-                throw new MyProjectException500(ErrorCodes.NOT_DELETABLE );
+                throw new MyProjectException500(ErrorCodes.NOT_ALTERABLE );
             }
             else {
                 regleRepository.delete(id);
@@ -62,8 +62,13 @@ public class RegleService {
 
     public Regle update(Regle regleForUpdate, Long id) {
         Regle regle = getById(id);
-        regle.update(regleForUpdate);
-        return regleRepository.save(regle);
+        if (regle.getDomaine().startsWith("ERREUR")) {
+            throw new MyProjectException500(ErrorCodes.NOT_ALTERABLE );
+        }
+        else {
+            regle.update(regleForUpdate);
+            return regleRepository.save(regle);
+        }
     }
 
 
