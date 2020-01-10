@@ -10,12 +10,8 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(SpringExtension.class)
-//@DataJpaTest
 @SpringBootTest
 public class SaisieTransformationTest {
-
-//    @Autowired
-//    private TestEntityManager entityManager;
 
     @Test
     void test_all_getter() {
