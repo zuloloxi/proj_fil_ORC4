@@ -1,5 +1,7 @@
 package com.dojo.stage.domain;
 
+import java.util.Objects;
+
 public class SaisieTransformation {
 
     private Long id;
@@ -49,6 +51,19 @@ public class SaisieTransformation {
         this.equipe = saisieTransformationForUpdate.equipe;
         this.profil = saisieTransformationForUpdate.profil;
         this.competences = saisieTransformationForUpdate.competences;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof SaisieTransformation)) return false;
+        SaisieTransformation that = (SaisieTransformation) o;
+        return Objects.equals(id, that.id) &&
+                Objects.equals(collaborateurUid, that.collaborateurUid) &&
+                Objects.equals(domaine, that.domaine) &&
+                Objects.equals(equipe, that.equipe) &&
+                Objects.equals(profil, that.profil) &&
+                Objects.equals(competences, that.competences);
     }
 
 }

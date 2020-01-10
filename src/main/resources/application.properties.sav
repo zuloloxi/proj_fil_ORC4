@@ -1,0 +1,10 @@
+## Spring DATASOURCE (DataSourceAutoConfiguration & DataSourceProperties)
+#spring.datasource.url=jdbc:postgresql://localhost/test_filrouge
+spring.datasource.url=jdbc:postgresql://localhost/collecte_collaborateur
+spring.datasource.username= postgres
+spring.jpa.hibernate.ddl-auto=create-drop
+spring.datasource.password= admin
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+spring.datasource.initialization-mode=always
+spring.datasource.data=classpath:data/collaborateur.sql,classpath:data/competence.sql,classpath:data/regle.sql,classpath:data/regle_has_competences,classpath:data/sequence.sql

@@ -27,8 +27,8 @@ public class SaisieTransformationIntegrationTest {
 
     static int numberOfLinesInserted = 0;
 
-    @Test
-    @Order(1)
+    @BeforeEach
+//    @Order(1)
     public void loadData() {
         numberOfLinesInserted = SaisieTransformationData.loadData(saisieTransformationRepository);
     }
