@@ -54,6 +54,14 @@
 			<scope>test</scope>
 		</dependency>
 
+		<!-- h2 pour les TU -->
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>1.4.200</version>
+			<scope>test</scope>
+		</dependency>
+
 		<!-- 2 suivantes pour swagger -->
 		<dependency>
 			<groupId>io.springfox</groupId>
